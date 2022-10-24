@@ -3,3 +3,9 @@ export type RootStackParamList = {
     SignUp: undefined;
     SignIn: undefined;
 };
+
+export type SignUpStackParamList = {
+    Identifier: undefined;
+    Password: undefined;
+    CheckPassword: undefined;
+};

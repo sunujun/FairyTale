@@ -1,21 +1,31 @@
 import React from 'react';
 import { StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { RootStackParamList, SignUpStackNavigator } from 'navigation';
 import { FrontScreen } from 'screens';
-import { RootStackParamList } from 'navigation';
 
 /** https://reactnavigation.org/docs/typescript/#type-checking-the-navigator */
-const Stack = createNativeStackNavigator<RootStackParamList>();
+const Stack = createStackNavigator<RootStackParamList>();
 
 const App = () => {
     return (
         <SafeAreaProvider>
             <NavigationContainer>
                 <StatusBar translucent backgroundColor="transparent" />
-                <Stack.Navigator>
-                    <Stack.Screen name="FrontScreen" component={FrontScreen} options={{ headerShown: false }} />
+                <Stack.Navigator
+                    screenOptions={{
+                        headerShown: false,
+                    }}>
+                    <Stack.Screen name="FrontScreen" component={FrontScreen} />
+                    <Stack.Screen
+                        name="SignUp"
+                        component={SignUpStackNavigator}
+                        options={{
+                            ...TransitionPresets.FadeFromBottomAndroid,
+                        }}
+                    />
                 </Stack.Navigator>
             </NavigationContainer>
         </SafeAreaProvider>
