@@ -9,3 +9,8 @@ export type SignUpStackParamList = {
     Password: undefined;
     CheckPassword: undefined;
 };
+
+export type SignInStackParamList = {
+    Identifier: undefined;
+    Password: undefined;
+};

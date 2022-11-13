@@ -43,7 +43,7 @@ export default function FrontScreen() {
                 <LoginButton onPress={() => navigation.navigate('SignUp')}>
                     <ButtonText>회원가입</ButtonText>
                 </LoginButton>
-                <LoginButton>
+                <LoginButton onPress={() => navigation.navigate('SignIn')}>
                     <ButtonText>로그인</ButtonText>
                 </LoginButton>
             </Background>

@@ -3,7 +3,7 @@ import { StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { RootStackParamList, SignUpStackNavigator } from 'navigation';
+import { RootStackParamList, SignInStackNavigator, SignUpStackNavigator } from 'navigation';
 import { FrontScreen } from 'screens';
 
 /** https://reactnavigation.org/docs/typescript/#type-checking-the-navigator */
@@ -22,6 +22,13 @@ const App = () => {
                     <Stack.Screen
                         name="SignUp"
                         component={SignUpStackNavigator}
+                        options={{
+                            ...TransitionPresets.FadeFromBottomAndroid,
+                        }}
+                    />
+                    <Stack.Screen
+                        name="SignIn"
+                        component={SignInStackNavigator}
                         options={{
                             ...TransitionPresets.FadeFromBottomAndroid,
                         }}
