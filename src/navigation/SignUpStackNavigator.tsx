@@ -11,7 +11,7 @@ function SignUpStackNavigator() {
         <Stack.Navigator
             screenOptions={{
                 gestureEnabled: false,
-                headerMode: 'screen',
+                headerShown: false,
                 ...TransitionPresets.SlideFromRightIOS,
             }}>
             <Stack.Screen name="Identifier" component={Identifier} />

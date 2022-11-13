@@ -22,7 +22,7 @@ const LoginButton = styled(Pressable)`
     justify-content: center;
     align-items: center;
     border-radius: ${standardWidth(4)}px;
-    margin_bottom: ${standardHeight(10)}px;
+    margin-bottom: ${standardHeight(10)}px;
 `;
 
 const ButtonText = styled(Text)`
