@@ -1,48 +1,21 @@
 import React from 'react';
 import { StatusBar } from 'react-native';
+import { Provider } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { MainTabNavigator, RootStackParamList, SignInStackNavigator, SignUpStackNavigator } from 'navigation';
-import { FrontScreen } from 'screens';
-
-/** https://reactnavigation.org/docs/typescript/#type-checking-the-navigator */
-const Stack = createStackNavigator<RootStackParamList>();
+import { RootStackNavigator } from 'screens';
+import store from 'redux/store/index';
 
 const App = () => {
     return (
-        <SafeAreaProvider>
-            <NavigationContainer>
-                <StatusBar translucent backgroundColor="transparent" />
-                <Stack.Navigator
-                    screenOptions={{
-                        headerShown: false,
-                    }}>
-                    <Stack.Screen name="FrontScreen" component={FrontScreen} />
-                    <Stack.Screen
-                        name="SignUp"
-                        component={SignUpStackNavigator}
-                        options={{
-                            ...TransitionPresets.FadeFromBottomAndroid,
-                        }}
-                    />
-                    <Stack.Screen
-                        name="SignIn"
-                        component={SignInStackNavigator}
-                        options={{
-                            ...TransitionPresets.FadeFromBottomAndroid,
-                        }}
-                    />
-                    <Stack.Screen
-                        name="Main"
-                        component={MainTabNavigator}
-                        // options={{
-                        //     ...TransitionPresets.FadeFromBottomAndroid,
-                        // }}
-                    />
-                </Stack.Navigator>
-            </NavigationContainer>
-        </SafeAreaProvider>
+        <Provider store={store}>
+            <SafeAreaProvider>
+                <NavigationContainer>
+                    <StatusBar translucent backgroundColor="transparent" />
+                    <RootStackNavigator />
+                </NavigationContainer>
+            </SafeAreaProvider>
+        </Provider>
     );
 };
 

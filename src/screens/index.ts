@@ -6,3 +6,4 @@ export { default as SignInIdentifier } from './signIn/Identifier';
 export { default as SignInPassword } from './signIn/Password';
 export { default as BookList } from './BookList';
 export { default as Settings } from './Settings';
+export { default as RootStackNavigator } from './RootStackNavigator';
