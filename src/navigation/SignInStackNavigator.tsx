@@ -1,9 +1,9 @@
 import React from 'react';
 import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
-import { SignUpStackParamList } from 'navigation';
+import { SignInStackParamList } from 'navigation';
 import { SignInIdentifier, SignInPassword } from 'screens';
 
-const Stack = createStackNavigator<SignUpStackParamList>();
+const Stack = createStackNavigator<SignInStackParamList>();
 
 /** 로그인 Navigation */
 function SignInStackNavigator() {

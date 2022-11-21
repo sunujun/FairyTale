@@ -4,3 +4,5 @@ export { default as Password } from './signUp/Password';
 export { default as CheckPassword } from './signUp/CheckPassword';
 export { default as SignInIdentifier } from './signIn/Identifier';
 export { default as SignInPassword } from './signIn/Password';
+export { default as BookList } from './BookList';
+export { default as Settings } from './Settings';
