@@ -5,7 +5,7 @@ import { useAppDispatch } from 'redux/store';
 import userSlice from 'redux/slices/user';
 
 /** 설정 화면 */
-export default function Settings() {
+const Settings = () => {
     const dispatch = useAppDispatch();
 
     return (
@@ -23,4 +23,6 @@ export default function Settings() {
             </Pressable>
         </SafeAreaView>
     );
-}
+};
+
+export default Settings;

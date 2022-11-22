@@ -41,7 +41,7 @@ const NextButton = styled(Pressable)`
 `;
 
 /** ID 입력 화면 */
-export default function Identifier() {
+const Identifier = () => {
     const navigation = useNavigation<IdentifierScreenProp>();
 
     return (
@@ -62,4 +62,6 @@ export default function Identifier() {
             </NextButton>
         </SafeAreaView>
     );
-}
+};
+
+export default Identifier;

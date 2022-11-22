@@ -7,7 +7,7 @@ import { Home, Favorites, Settings } from 'screens';
 const Tab = createMaterialBottomTabNavigator<MainTabParamList>();
 
 /** Main Navigation */
-function MainTabNavigator() {
+const MainTabNavigator = () => {
     return (
         <Tab.Navigator activeColor="#f0edf6" inactiveColor="#3e2465" backBehavior="none">
             <Tab.Screen
@@ -37,6 +37,6 @@ function MainTabNavigator() {
             {/* 추가되는 페이지는 밑에다가 작성 */}
         </Tab.Navigator>
     );
-}
+};
 
 export default MainTabNavigator;

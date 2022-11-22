@@ -6,7 +6,7 @@ import { CheckPassword, Identifier, Password } from 'screens';
 const Stack = createStackNavigator<SignUpStackParamList>();
 
 /** 회원 가입 Navigation */
-function SignUpStackNavigator() {
+const SignUpStackNavigator = () => {
     return (
         <Stack.Navigator
             screenOptions={{
@@ -20,6 +20,6 @@ function SignUpStackNavigator() {
             {/* 추가되는 설정 페이지는 밑에다가 작성 */}
         </Stack.Navigator>
     );
-}
+};
 
 export default SignUpStackNavigator;

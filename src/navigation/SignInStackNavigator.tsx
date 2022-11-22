@@ -6,7 +6,7 @@ import { SignInIdentifier, SignInPassword } from 'screens';
 const Stack = createStackNavigator<SignInStackParamList>();
 
 /** 로그인 Navigation */
-function SignInStackNavigator() {
+const SignInStackNavigator = () => {
     return (
         <Stack.Navigator
             screenOptions={{
@@ -19,6 +19,6 @@ function SignInStackNavigator() {
             {/* 추가되는 설정 페이지는 밑에다가 작성 */}
         </Stack.Navigator>
     );
-}
+};
 
 export default SignInStackNavigator;

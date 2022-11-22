@@ -36,7 +36,7 @@ const NextButton = styled(Pressable)`
 `;
 
 /** Password 입력 화면 */
-export default function Password() {
+const Password = () => {
     return (
         <SafeAreaView mode="margin" edges={['right', 'left', 'bottom']} style={{ flex: 1 }}>
             <Background>
@@ -55,4 +55,6 @@ export default function Password() {
             </NextButton>
         </SafeAreaView>
     );
-}
+};
+
+export default Password;

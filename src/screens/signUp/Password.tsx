@@ -41,7 +41,7 @@ const NextButton = styled(Pressable)`
 `;
 
 /** Password 입력 화면 */
-export default function Password() {
+const Password = () => {
     const navigation = useNavigation<PasswordScreenProp>();
 
     return (
@@ -62,4 +62,6 @@ export default function Password() {
             </NextButton>
         </SafeAreaView>
     );
-}
+};
+
+export default Password;
