@@ -1,11 +1,13 @@
-import React from 'react';
-import { StyleSheet, Text, TextInput, View } from 'react-native';
+import React, { useState } from 'react';
+import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import OctIcons from 'react-native-vector-icons/Octicons';
 import { standardFontSize, standardHeight, standardWidth } from 'styles';
 
 /** 홈 화면 */
 const Home = () => {
+    const [searchText, setSearchText] = useState('');
+
     return (
         <SafeAreaView mode="margin" style={styles.safeArea}>
             <View style={styles.container}>
@@ -13,9 +15,16 @@ const Home = () => {
                     <OctIcons name="search" size={standardFontSize(18)} />
                     <TextInput
                         style={styles.searchInput}
+                        value={searchText}
+                        onChangeText={text => setSearchText(text)}
                         placeholder="검색어를 입력하세요"
                         inlineImageLeft="search_icon"
                     />
+                    {searchText !== '' && (
+                        <Pressable onPress={() => setSearchText('')}>
+                            <OctIcons name="x-circle-fill" size={standardFontSize(20)} />
+                        </Pressable>
+                    )}
                 </View>
             </View>
             <Text>홈</Text>
@@ -46,7 +55,8 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: standardFontSize(18),
         height: standardHeight(44),
-        marginLeft: standardWidth(8),
+        width: standardWidth(240),
+        marginHorizontal: standardWidth(8),
     },
 });
 
