@@ -36,7 +36,7 @@ const NextButton = styled(Pressable)`
 `;
 
 /** Password 재확인 화면 */
-export default function CheckPassword() {
+const CheckPassword = () => {
     return (
         <SafeAreaView mode="margin" edges={['right', 'left', 'bottom']} style={{ flex: 1 }}>
             <Background>
@@ -55,4 +55,6 @@ export default function CheckPassword() {
             </NextButton>
         </SafeAreaView>
     );
-}
+};
+
+export default CheckPassword;
