@@ -17,7 +17,7 @@ export type SignInStackParamList = {
 };
 
 export type MainTabParamList = {
-    BookList: undefined;
-    Search: undefined;
+    Home: undefined;
+    Favorites: undefined;
     Settings: undefined;
 };
