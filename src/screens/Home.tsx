@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
+import React, { useCallback, useState } from 'react';
+import { FlatList, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import OctIcons from 'react-native-vector-icons/Octicons';
 import { standardFontSize, standardHeight, standardWidth } from 'styles';
@@ -11,11 +11,20 @@ interface FilterButtonProps {
     label: string;
 }
 
+interface BookProps {
+    /** key  */
+    key: string;
+    /** 제목 */
+    title: string;
+}
+
 /** 홈 화면 */
 const Home = () => {
+    /** 책 이름 검색 */
     const [searchText, setSearchText] = useState('');
+    /** 선택된 필터 옵션 */
     const [filterOption, setFilterOption] = useState('all');
-
+    /** 필터 종류 */
     const filterData: FilterButtonProps[] = [
         {
             key: 'all',
@@ -38,6 +47,64 @@ const Home = () => {
             label: '관심',
         },
     ];
+    /** FIXME: 임시 책 데이터: 서버에서 받아와야함 */
+    const bookData: BookProps[] = [
+        {
+            key: 'heung',
+            title: '흥부전',
+        },
+        {
+            key: 'byeol',
+            title: '별주부전',
+        },
+        {
+            key: 'kong',
+            title: '콩쥐팥쥐',
+        },
+        {
+            key: 'bro',
+            title: '의좋은 형제',
+        },
+        {
+            key: 'chun',
+            title: '춘향전',
+        },
+        {
+            key: 'gold',
+            title: '금도끼 은도끼',
+        },
+        {
+            key: 'wood',
+            title: '선녀와 나무꾼',
+        },
+        {
+            key: 'sim',
+            title: '심청전',
+        },
+        {
+            key: 'cinderella',
+            title: '신데렐라',
+        },
+        {
+            key: 'sleep',
+            title: '잠자는 숲 속의 공주',
+        },
+    ];
+
+    const renderItem = useCallback(({ item }: { item: BookProps }) => {
+        return (
+            <Pressable>
+                <View style={styles.bookList}>
+                    <Text>{item.title}</Text>
+                </View>
+            </Pressable>
+        );
+    }, []);
+
+    const keyExtractor = useCallback((item: BookProps) => {
+        return item.key;
+    }, []);
+
     return (
         <SafeAreaView mode="margin" style={styles.safeArea}>
             <View style={styles.container}>
@@ -59,6 +126,7 @@ const Home = () => {
                     {filterData.map(item => {
                         return (
                             <Pressable
+                                key={item.key}
                                 onPress={() => setFilterOption(item.key)}
                                 style={
                                     filterOption === item.key ? styles.selectedFilterBox : styles.unselectedFilterBox
@@ -75,11 +143,14 @@ const Home = () => {
                         );
                     })}
                 </View>
-                <View>
-                    <Text>책 리스트</Text>
-                </View>
+                <FlatList
+                    data={bookData}
+                    ItemSeparatorComponent={() => <View style={styles.separator} />}
+                    renderItem={renderItem}
+                    keyExtractor={keyExtractor}
+                    showsVerticalScrollIndicator={false}
+                />
             </View>
-            <Text>홈</Text>
         </SafeAreaView>
     );
 };
@@ -144,6 +215,16 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: standardFontSize(12),
         color: '#999999',
+    },
+    separator: {
+        backgroundColor: '#999999',
+        height: 1,
+    },
+    bookList: {
+        width: standardWidth(360),
+        height: standardHeight(40),
+        justifyContent: 'center',
+        paddingLeft: standardWidth(20),
     },
 });
 
