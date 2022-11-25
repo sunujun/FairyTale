@@ -10,7 +10,7 @@ import { RootState } from 'redux/store/reducers';
 const Stack = createStackNavigator<RootStackParamList>();
 
 /** 초기 화면 */
-export default function RootStackNavigator() {
+const RootStackNavigator = () => {
     const dispatch = useAppDispatch();
     const isLoggedIn = useSelector((state: RootState) => !!state.user.email);
 
@@ -88,4 +88,6 @@ export default function RootStackNavigator() {
             />
         </Stack.Navigator>
     );
-}
+};
+
+export default RootStackNavigator;

@@ -36,7 +36,7 @@ const ButtonText = styled(Text)`
 type FrontScreenProp = StackNavigationProp<RootStackParamList, 'FrontScreen'>;
 
 /** 초기 화면 */
-export default function FrontScreen() {
+const FrontScreen = () => {
     const navigation = useNavigation<FrontScreenProp>();
     const dispatch = useAppDispatch();
 
@@ -63,4 +63,6 @@ export default function FrontScreen() {
             </Background>
         </SafeAreaView>
     );
-}
+};
+
+export default FrontScreen;
