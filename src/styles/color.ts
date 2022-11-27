@@ -13,8 +13,8 @@ export default {
         hint: '#bbbbbb',
         /** ![](https://www.colorhexa.com/a26077.png) */
         main: '#98556c',
-        /** ![](https://www.colorhexa.com/ff5e73.png) */
-        caution1: '#ff5e73',
+        /** ![](https://www.colorhexa.com/fbf3d6.png) */
+        caution1: '#fbf3d6',
         /** ![](https://www.colorhexa.com/166bff.png) */
         caution2: '#166bff',
     },
@@ -28,10 +28,10 @@ export default {
         secondary: '#fff3f1',
         /** ![](https://www.colorhexa.com/ffffff.png) */
         disabled: '#ffffff',
-        /** ![](https://www.colorhexa.com/ccaab6.png) */
-        disabledPrimary: '#ccaab6',
+        /** ![](https://www.colorhexa.com/fff5e6.png) */
+        disabledPrimary: '#5e4e0b',
         /** ![](https://www.colorhexa.com/eeeeee.png) */
-        border: '#eeeeee',
+        border: '#5e4e0b',
     },
     /** 배경 색상 */
     background: {
@@ -39,5 +39,7 @@ export default {
         primary: '#ffffff',
         /** ![](https://www.colorhexa.com/f5f5f5.png) */
         secondary: '#f5f5f5',
+        /** ![](https://www.colorhexa.com/fffdfa.png) */
+        disabled: '#fdfbed'
     },
 };

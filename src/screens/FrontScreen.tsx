@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { Pressable, Text, View, Image } from 'react-native';
 import styled from 'styled-components';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
@@ -8,6 +8,7 @@ import { RootStackParamList } from 'navigation';
 import { color, standardFontSize, standardHeight, standardWidth } from 'styles';
 import { useAppDispatch } from 'redux/store';
 import userSlice from 'redux/slices/user';
+
 
 const Background = styled(View)`
     flex: 1;
@@ -18,13 +19,13 @@ const Background = styled(View)`
 `;
 
 const LoginButton = styled(Pressable)`
-    width: ${standardWidth(310)}px;
+    width: ${standardWidth(200)}px;
     height: ${standardHeight(40)}px;
     background-color: ${color.button.disabled};
     justify-content: center;
     align-items: center;
-    border-radius: ${standardWidth(4)}px;
-    margin-bottom: ${standardHeight(10)}px;
+    border-radius: ${standardWidth(40)}px;
+    margin-bottom: ${standardHeight(20)}px;
 `;
 
 const ButtonText = styled(Text)`
@@ -43,6 +44,9 @@ const FrontScreen = () => {
     return (
         <SafeAreaView mode="margin" edges={['right', 'left', 'bottom']} style={{ flex: 1 }}>
             <Background>
+                <Image source={require('../screens/img/Fairyteller.png')} style={{ width: 450, height: 150}} />
+                <Image source={require('../screens/img/Book.png')} style={{ width: 200, height: 170}} />
+                <Image source={require('../screens/img/Leaf-shapes.png')} style={{ width: '100%', height: 80, position: 'absolute', padding: 230}} />
                 {/* FIXME: 임시 버튼 */}
                 <LoginButton
                     onPress={() => {

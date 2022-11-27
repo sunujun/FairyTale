@@ -11,6 +11,7 @@ type IdentifierScreenProp = StackNavigationProp<SignUpStackParamList, 'Identifie
 
 const Background = styled(View)`
     flex: 1;
+    background-color: ${color.background.disabled};
     padding-top: ${StatusBar.currentHeight}px;
 `;
 
