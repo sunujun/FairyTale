@@ -5,6 +5,6 @@ export { default as CheckPassword } from './signUp/CheckPassword';
 export { default as SignInIdentifier } from './signIn/Identifier';
 export { default as SignInPassword } from './signIn/Password';
 export { default as Home } from './Home';
-export { default as Favorites } from './Favorites';
 export { default as Settings } from './Settings';
 export { default as RootStackNavigator } from './RootStackNavigator';
+export { default as Player } from './Player';

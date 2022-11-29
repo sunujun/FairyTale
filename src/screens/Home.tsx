@@ -1,5 +1,8 @@
 import React, { useCallback, useState } from 'react';
 import { FlatList, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { HomeStackParamList } from 'navigation';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import OctIcons from 'react-native-vector-icons/Octicons';
 import { standardFontSize, standardHeight, standardWidth } from 'styles';
@@ -16,7 +19,12 @@ interface BookProps {
     key: string;
     /** 제목 */
     title: string;
+    /** 아티스트 */
+    artist: string;
+    url: any;
 }
+
+type HomeStackProp = StackNavigationProp<HomeStackParamList, 'Home'>;
 
 /** 홈 화면 */
 const Home = () => {
@@ -24,6 +32,7 @@ const Home = () => {
     const [searchText, setSearchText] = useState('');
     /** 선택된 필터 옵션 */
     const [filterOption, setFilterOption] = useState('all');
+    const navigation = useNavigation<HomeStackProp>();
     /** 필터 종류 */
     const filterData: FilterButtonProps[] = [
         {
@@ -50,56 +59,46 @@ const Home = () => {
     /** FIXME: 임시 책 데이터: 서버에서 받아와야함 */
     const bookData: BookProps[] = [
         {
-            key: 'heung',
-            title: '흥부전',
-        },
-        {
-            key: 'byeol',
-            title: '별주부전',
-        },
-        {
-            key: 'kong',
+            key: 'Kongjwi Patjwi',
             title: '콩쥐팥쥐',
+            artist: '한국전래동화',
+            url: require('mp3/Kongjwi_Patjwi.mp3'),
         },
         {
-            key: 'bro',
-            title: '의좋은 형제',
-        },
-        {
-            key: 'chun',
-            title: '춘향전',
-        },
-        {
-            key: 'gold',
-            title: '금도끼 은도끼',
-        },
-        {
-            key: 'wood',
-            title: '선녀와 나무꾼',
-        },
-        {
-            key: 'sim',
-            title: '심청전',
-        },
-        {
-            key: 'cinderella',
+            key: 'Cinderella',
             title: '신데렐라',
+            artist: '외국전래동화',
+            url: require('mp3/Cinderella.mp3'),
         },
         {
-            key: 'sleep',
-            title: '잠자는 숲 속의 공주',
+            key: 'The Little Mermaid',
+            title: '인어공주',
+            url: require('mp3/The_Little_Mermaid.mp3'),
+            artist: '외국전래동화',
+        },
+        {
+            key: 'custom',
+            title: '커스텀보이스',
+            url: require('mp3/custom.mp3'),
+            artist: '커스텀보이스',
         },
     ];
 
-    const renderItem = useCallback(({ item }: { item: BookProps }) => {
-        return (
-            <Pressable>
-                <View style={styles.bookList}>
-                    <Text>{item.title}</Text>
-                </View>
-            </Pressable>
-        );
-    }, []);
+    const renderItem = useCallback(
+        ({ item }: { item: BookProps }) => {
+            return (
+                <Pressable
+                    onPress={() => {
+                        navigation.navigate('Player', { bookData: item });
+                    }}>
+                    <View style={styles.bookList}>
+                        <Text>{item.title}</Text>
+                    </View>
+                </Pressable>
+            );
+        },
+        [navigation],
+    );
 
     const keyExtractor = useCallback((item: BookProps) => {
         return item.key;

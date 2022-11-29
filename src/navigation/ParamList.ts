@@ -17,7 +17,20 @@ export type SignInStackParamList = {
 };
 
 export type MainTabParamList = {
-    Home: undefined;
-    Favorites: undefined;
+    HomeNavigator: undefined;
     Settings: undefined;
+};
+
+interface BookProps {
+    /** key  */
+    key: string;
+    /** 제목 */
+    title: string;
+    artist: string;
+    url: any;
+}
+
+export type HomeStackParamList = {
+    Home: undefined;
+    Player: { bookData: BookProps };
 };
