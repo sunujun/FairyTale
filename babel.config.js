@@ -8,6 +8,7 @@ module.exports = {
                 extensions: ['.ios.js', '.android.js', '.js', '.ts', '.tsx', '.json'],
                 alias: {
                     underscore: 'lodash',
+                    mp3: './assets/mp3',
                 },
             },
         ],
