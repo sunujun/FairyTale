@@ -9,7 +9,7 @@ import { color, standardFontSize, standardHeight, standardWidth } from 'styles';
 import { useAppDispatch } from 'redux/store';
 import signUpSlice from 'redux/slices/signUp';
 
-type PasswordScreenProp = StackNavigationProp<SignUpStackParamList, 'Password'>;
+type NameScreenProp = StackNavigationProp<SignUpStackParamList, 'Name'>;
 
 const Background = styled(View)`
     flex: 1;
@@ -40,22 +40,22 @@ const NextButton = styled(Pressable)`
     border-radius: ${standardWidth(4)}px;
 `;
 
-/** Password 입력 화면 */
-const Password = () => {
-    const navigation = useNavigation<PasswordScreenProp>();
+/** 이름 입력 화면 */
+const Name = () => {
+    const navigation = useNavigation<NameScreenProp>();
     const dispatch = useAppDispatch();
-    const [password, setPassword] = useState('');
+    const [name, setName] = useState('');
 
     return (
         <SafeAreaView mode="margin" edges={['right', 'left', 'bottom']} style={{ flex: 1 }}>
             <Background>
                 <Content>
-                    <MainText>비밀번호</MainText>
-                    <SubText>사용할 비밀번호를 입력하세요</SubText>
-                    {/* TODO: 임시 비밀번호 입력 */}
+                    <MainText>이름</MainText>
+                    <SubText>이름을 입력하세요</SubText>
+                    {/* TODO: 임시 이름 입력 */}
                     <TextInput
                         style={{ borderBottomWidth: 1, borderBottomColor: 'black' }}
-                        onChangeText={text => setPassword(text)}
+                        onChangeText={text => setName(text)}
                     />
                 </Content>
             </Background>
@@ -63,11 +63,11 @@ const Password = () => {
             <NextButton
                 onPress={() => {
                     dispatch(
-                        signUpSlice.actions.setPw({
-                            pw: password,
+                        signUpSlice.actions.setName({
+                            name: name,
                         }),
                     );
-                    navigation.navigate('CheckPassword');
+                    navigation.navigate('Password');
                 }}>
                 <Text>다음</Text>
             </NextButton>
@@ -75,4 +75,4 @@ const Password = () => {
     );
 };
 
-export default Password;
+export default Name;

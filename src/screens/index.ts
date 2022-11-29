@@ -1,10 +1,10 @@
 export { default as FrontScreen } from './FrontScreen';
 export { default as Identifier } from './signUp/Identifier';
+export { default as Name } from './signUp/Name';
 export { default as Password } from './signUp/Password';
 export { default as CheckPassword } from './signUp/CheckPassword';
 export { default as SignInIdentifier } from './signIn/Identifier';
 export { default as SignInPassword } from './signIn/Password';
 export { default as Home } from './Home';
 export { default as Settings } from './Settings';
-export { default as RootStackNavigator } from './RootStackNavigator';
 export { default as Player } from './Player';

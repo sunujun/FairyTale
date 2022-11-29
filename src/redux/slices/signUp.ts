@@ -3,16 +3,17 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
     name: '',
     email: '',
-    accessToken: '',
+    pw: '',
+    isNew: true,
 };
-const userSlice = createSlice({
-    name: 'user',
+const signUpSlice = createSlice({
+    name: 'signUp',
     initialState,
     reducers: {
-        setUser(state, action) {
+        setSignUp(state, action) {
             state.email = action.payload.email;
             state.name = action.payload.name;
-            state.accessToken = action.payload.accessToken;
+            state.pw = action.payload.pw;
         },
         setName(state, action) {
             state.name = action.payload.name;
@@ -20,12 +21,10 @@ const userSlice = createSlice({
         setEmail(state, action) {
             state.email = action.payload.email;
         },
-        setAccessToken(state, action) {
-            state.accessToken = action.payload.accessToken;
+        setPw(state, action) {
+            state.pw = action.payload.pw;
         },
     },
-    // extraReducer는 비동기 액션 생성시 필요
-    // extraReducers: builder => {},
 });
 
-export default userSlice;
+export default signUpSlice;

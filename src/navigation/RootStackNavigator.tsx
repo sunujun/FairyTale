@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
 import { MainTabNavigator, RootStackParamList, SignInStackNavigator, SignUpStackNavigator } from 'navigation';
 import { FrontScreen } from 'screens';
-import { useAppDispatch } from 'redux/store/index';
 import { RootState } from 'redux/store/reducers';
 
 /** https://reactnavigation.org/docs/typescript/#type-checking-the-navigator */
@@ -11,7 +10,6 @@ const Stack = createStackNavigator<RootStackParamList>();
 
 /** 초기 화면 */
 const RootStackNavigator = () => {
-    const dispatch = useAppDispatch();
     const isLoggedIn = useSelector((state: RootState) => !!state.user.email);
 
     // 앱 실행 시 토큰 존재하면 로그인 활성화
@@ -79,13 +77,7 @@ const RootStackNavigator = () => {
             screenOptions={{
                 headerShown: false,
             }}>
-            <Stack.Screen
-                name="Main"
-                component={MainTabNavigator}
-                // options={{
-                //     ...TransitionPresets.FadeFromBottomAndroid,
-                // }}
-            />
+            <Stack.Screen name="Main" component={MainTabNavigator} />
         </Stack.Navigator>
     );
 };
