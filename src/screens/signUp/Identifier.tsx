@@ -34,7 +34,7 @@ const SubText = styled(Text)`
 
 const NextButton = styled(Pressable)`
     height: ${standardHeight(44)}px;
-    background-color: ${color.button.disabledPrimary};
+    background-color: ${color.button.primary};
     justify-content: center;
     align-items: center;
     border-radius: ${standardWidth(4)}px;
@@ -63,6 +63,8 @@ const Identifier = () => {
             </Background>
             {/* TODO: 텍스트 인풋에 아이디가 입력되어야 press 활성화, 비활성화/활성화 디자인 추가 */}
             <NextButton
+                disabled={id === ''}
+                style={id === '' && { backgroundColor: color.button.disabledPrimary }}
                 onPress={() => {
                     dispatch(
                         signUpSlice.actions.setEmail({
