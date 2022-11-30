@@ -3,7 +3,7 @@ import { Pressable } from 'react-native';
 import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { SignUpStackParamList } from 'navigation';
-import { CheckPassword, Identifier, Password } from 'screens';
+import { CheckPassword, Identifier, Name, Password } from 'screens';
 
 const Stack = createStackNavigator<SignUpStackParamList>();
 
@@ -22,6 +22,7 @@ const SignUpStackNavigator = () => {
                 ...TransitionPresets.SlideFromRightIOS,
             })}>
             <Stack.Screen name="Identifier" component={Identifier} />
+            <Stack.Screen name="Name" component={Name} />
             <Stack.Screen name="Password" component={Password} />
             <Stack.Screen name="CheckPassword" component={CheckPassword} />
             {/* 추가되는 설정 페이지는 밑에다가 작성 */}

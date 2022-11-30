@@ -6,8 +6,6 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { RootStackParamList } from 'navigation';
 import { color, standardFontSize, standardHeight, standardWidth } from 'styles';
-import { useAppDispatch } from 'redux/store';
-import userSlice from 'redux/slices/user';
 
 const Background = styled(View)`
     flex: 1;
@@ -38,22 +36,10 @@ type FrontScreenProp = StackNavigationProp<RootStackParamList, 'FrontScreen'>;
 /** 초기 화면 */
 const FrontScreen = () => {
     const navigation = useNavigation<FrontScreenProp>();
-    const dispatch = useAppDispatch();
 
     return (
         <SafeAreaView mode="margin" edges={['right', 'left', 'bottom']} style={{ flex: 1 }}>
             <Background>
-                {/* FIXME: 임시 버튼 */}
-                <LoginButton
-                    onPress={() => {
-                        dispatch(
-                            userSlice.actions.setUser({
-                                email: '123',
-                            }),
-                        );
-                    }}>
-                    <ButtonText>메인으로 이동</ButtonText>
-                </LoginButton>
                 <LoginButton onPress={() => navigation.navigate('SignUp')}>
                     <ButtonText>회원가입</ButtonText>
                 </LoginButton>

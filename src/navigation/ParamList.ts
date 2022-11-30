@@ -7,6 +7,7 @@ export type RootStackParamList = {
 
 export type SignUpStackParamList = {
     Identifier: undefined;
+    Name: undefined;
     Password: undefined;
     CheckPassword: undefined;
 };

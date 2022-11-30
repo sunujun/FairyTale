@@ -9,8 +9,7 @@ const Settings = () => {
     const dispatch = useAppDispatch();
 
     return (
-        <SafeAreaView mode="margin" edges={['right', 'left', 'bottom']} style={{ flex: 1 }}>
-            <Text>설정</Text>
+        <SafeAreaView style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
             <Pressable
                 onPress={() => {
                     dispatch(
