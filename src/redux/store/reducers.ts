@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux';
+import signInSlice from 'redux/slices/signIn';
 import signUpSlice from 'redux/slices/signUp';
 import userSlice from 'redux/slices/user';
 
 const rootReducer = combineReducers({
     user: userSlice.reducer,
     signUp: signUpSlice.reducer,
+    signIn: signInSlice.reducer,
 });
 
 // RootReducer의 반환값 타입형은 RootState type alias로 지정 가능

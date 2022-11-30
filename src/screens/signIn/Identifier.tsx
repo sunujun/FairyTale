@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Pressable, StatusBar, Text, View, TextInput } from 'react-native';
 import styled from 'styled-components';
 import { useNavigation } from '@react-navigation/native';
@@ -6,6 +6,8 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { SignInStackParamList } from 'navigation';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { color, standardFontSize, standardHeight, standardWidth } from 'styles';
+import { useAppDispatch } from 'redux/store';
+import signInSlice from 'redux/slices/signIn';
 
 type IdentifierScreenProp = StackNavigationProp<SignInStackParamList, 'Identifier'>;
 
@@ -41,6 +43,8 @@ const NextButton = styled(Pressable)`
 /** ID 입력 화면 */
 const Identifier = () => {
     const navigation = useNavigation<IdentifierScreenProp>();
+    const dispatch = useAppDispatch();
+    const [id, setId] = useState('');
 
     return (
         <SafeAreaView mode="margin" edges={['right', 'left', 'bottom']} style={{ flex: 1 }}>
@@ -49,11 +53,22 @@ const Identifier = () => {
                     <MainText>아이디</MainText>
                     <SubText>아이디를 입력하세요</SubText>
                     {/* TODO: 임시 아이디 입력 */}
-                    <TextInput style={{ borderBottomWidth: 1, borderBottomColor: 'black' }} />
+                    <TextInput
+                        style={{ borderBottomWidth: 1, borderBottomColor: 'black' }}
+                        onChangeText={text => setId(text)}
+                    />
                 </Content>
             </Background>
             {/* TODO: 텍스트 인풋에 아이디가 입력되어야 press 활성화, 비활성화/활성화 디자인 추가 */}
-            <NextButton onPress={() => navigation.navigate('Password')}>
+            <NextButton
+                onPress={() => {
+                    dispatch(
+                        signInSlice.actions.setEmail({
+                            email: id,
+                        }),
+                    );
+                    navigation.navigate('Password');
+                }}>
                 <Text>다음</Text>
             </NextButton>
         </SafeAreaView>
