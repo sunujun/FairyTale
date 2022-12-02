@@ -2,7 +2,7 @@ import React from 'react';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { HomeStackNavigator, MainTabParamList } from 'navigation';
-import { Settings } from 'screens';
+import { Record, Settings } from 'screens';
 
 const Tab = createMaterialBottomTabNavigator<MainTabParamList>();
 
@@ -16,6 +16,14 @@ const MainTabNavigator = () => {
                 options={{
                     tabBarLabel: 'Home',
                     tabBarIcon: ({ color }) => <MaterialCommunityIcons name="home" color={color} size={26} />,
+                }}
+            />
+            <Tab.Screen
+                name="Record"
+                component={Record}
+                options={{
+                    tabBarLabel: 'Record',
+                    tabBarIcon: ({ color }) => <MaterialCommunityIcons name="record-rec" color={color} size={26} />,
                 }}
             />
             <Tab.Screen

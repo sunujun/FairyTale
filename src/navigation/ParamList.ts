@@ -19,6 +19,7 @@ export type SignInStackParamList = {
 
 export type MainTabParamList = {
     HomeNavigator: undefined;
+    Record: undefined;
     Settings: undefined;
 };
 
