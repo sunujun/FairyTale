@@ -1,9 +1,10 @@
 import React from 'react';
-import { Pressable } from 'react-native';
+import { Pressable, StyleSheet } from 'react-native';
 import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { SignInStackParamList } from 'navigation';
 import { SignInIdentifier, SignInPassword } from 'screens';
+import { color, standardWidth } from 'styles';
 
 const Stack = createStackNavigator<SignInStackParamList>();
 
@@ -13,10 +14,16 @@ const SignInStackNavigator = () => {
         <Stack.Navigator
             screenOptions={({ navigation }) => ({
                 gestureEnabled: false,
-                headerTitle: () => null,
+                headerTransparent: true,
+                headerTitle: () => '',
                 headerLeft: () => (
                     <Pressable onPress={() => navigation.goBack()}>
-                        <MaterialIcons name="arrow-back-ios" size={26} style={{ marginLeft: 20 }} />
+                        <MaterialIcons
+                            name="arrow-back-ios"
+                            size={26}
+                            style={styles.headerLeft}
+                            color={color.button.primary}
+                        />
                     </Pressable>
                 ),
                 ...TransitionPresets.SlideFromRightIOS,
@@ -27,5 +34,11 @@ const SignInStackNavigator = () => {
         </Stack.Navigator>
     );
 };
+
+const styles = StyleSheet.create({
+    headerLeft: {
+        marginLeft: standardWidth(20),
+    },
+});
 
 export default SignInStackNavigator;
