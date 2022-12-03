@@ -35,5 +35,8 @@ interface BookProps {
     artist: string;
     /** 줄거리 */
     summary: string;
+    /** 이미지 */
+    artwork?: any;
+    /** mp3 파일 */
     url: any;
 }

@@ -23,6 +23,9 @@ interface BookProps {
     artist: string;
     /** 줄거리 */
     summary: string;
+    /** 이미지 */
+    artwork?: any;
+    /** mp3 파일 */
     url: any;
 }
 
@@ -65,6 +68,7 @@ const Home = () => {
             title: '콩쥐팥쥐',
             artist: '한국전래동화',
             url: require('mp3/Kongjwi_Patjwi.mp3'),
+            artwork: require('images/kongjwi.jpg'),
             summary:
                 '계모 밑에서 갖은 학대를 받던 콩쥐가 고귀한 인물과 혼인하게 되고, 콩쥐를 괴롭히던 팥쥐와 계모는 처벌받는다는 내용의 설화',
         },
@@ -73,6 +77,7 @@ const Home = () => {
             title: '신데렐라',
             artist: '외국전래동화',
             url: require('mp3/Cinderella.mp3'),
+            artwork: require('images/cinderella.jpg'),
             summary:
                 '어려서 부모를 잃고 계모와 언니들한테 구박 받는 인생을 살지만 요정이 마법으로 만든 호박마차와 유리구두 한 짝 덕분에 왕자와 결혼하여 왕자비로서 인생역전하는 여인의 이야기',
         },
@@ -80,6 +85,7 @@ const Home = () => {
             key: 'The Little Mermaid',
             title: '인어공주',
             url: require('mp3/The_Little_Mermaid.mp3'),
+            artwork: require('images/theLittleMermaid.jpg'),
             artist: '외국전래동화',
             summary:
                 '폭풍에 휘말려 난파한 인간 왕자를 구해준 뒤 그를 사랑하게 된 인어공주는 자기 목소리를 희생하는 대신 인간처럼 두 다리가 생기는 조건으로 마녀와 거래하여 왕자를 다시 만난다. 그녀는 왕자에게 발견된 뒤, 얼마간 귀여움을 받고 행복을 꿈꾼다.',

@@ -1,5 +1,6 @@
 import React from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
+import FastImage from 'react-native-fast-image';
 import type { Track } from 'react-native-track-player';
 import { color } from 'styles';
 
@@ -10,7 +11,7 @@ export interface TrackInfoProps {
 export const TrackInfo: React.FC<TrackInfoProps> = ({ track }) => {
     return (
         <View style={styles.container}>
-            <Image style={styles.artwork} source={{ uri: `${track?.artwork}` }} />
+            <FastImage source={track?.artwork as number} style={styles.artwork} />
             <Text style={styles.titleText}>{track?.title}</Text>
             <Text style={styles.artistText}>{track?.artist}</Text>
         </View>
@@ -25,7 +26,7 @@ const styles = StyleSheet.create({
         width: 240,
         height: 240,
         marginTop: 30,
-        backgroundColor: 'grey',
+        backgroundColor: color.background.secondary,
     },
     titleText: {
         fontSize: 18,

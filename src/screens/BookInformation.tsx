@@ -5,6 +5,7 @@ import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { color, standardFontSize, standardHeight, standardWidth } from 'styles';
 import { RootStackParamList } from 'navigation';
+import FastImage from 'react-native-fast-image';
 
 type RootStackRouteProp = RouteProp<RootStackParamList, 'BookInformation'>;
 type RootStackProp = StackNavigationProp<RootStackParamList, 'Main'>;
@@ -52,7 +53,7 @@ const BookInformation = () => {
 
     return (
         <SafeAreaView style={styles.container}>
-            <View style={styles.image} />
+            <FastImage source={route.params.bookData.artwork} style={styles.image} />
             <Text style={styles.titleText}>{route.params?.bookData.title}</Text>
             <View style={{ width: standardWidth(360), paddingHorizontal: standardWidth(32) }}>
                 <View style={styles.filterWrapper}>
@@ -111,7 +112,7 @@ const styles = StyleSheet.create({
     image: {
         width: standardWidth(200),
         height: standardWidth(200),
-        backgroundColor: 'red',
+        backgroundColor: color.background.secondary,
     },
     titleText: {
         fontWeight: 'bold',
