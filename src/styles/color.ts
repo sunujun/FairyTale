@@ -17,8 +17,8 @@ export default {
         disabled: '#83C390',
         /** ![](https://www.colorhexa.com/FFFFFF.png) */
         button: '#FFFFFF',
-        /** ![](https://www.colorhexa.com/FDF3D6.png) */
-        caution1: '#FDF3D6',
+        /** ![](https://www.colorhexa.com/FF5E73.png) */
+        caution1: '#FF5E73',
         /** ![](https://www.colorhexa.com/166BFF.png) */
         caution2: '#166BFF',
         /** ![](https://www.colorhexa.com/FDFBED.png) */
@@ -43,5 +43,7 @@ export default {
         primary: '#FFFFFF',
         /** ![](https://www.colorhexa.com/EEEFF4.png) */
         secondary: '#EEEFF4',
+        /** ![](https://www.colorhexa.com/EEEFF4.png) */
+        front: '#FDF3D6',
     },
 };
