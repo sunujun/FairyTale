@@ -12,6 +12,8 @@
       "*": ["src/*"],
       "mp3/*": ["assets/mp3/*"],
       "mp3": ["assets/mp3"],
+      "images/*": ["assets/images/*"],
+      "images": ["assets/images"],
     },
   }
 }
