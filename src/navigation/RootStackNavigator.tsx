@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pressable } from 'react-native';
+import { Pressable, StatusBar } from 'react-native';
 import { useSelector } from 'react-redux';
 import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
@@ -57,47 +57,48 @@ const RootStackNavigator = () => {
             screenOptions={{
                 headerShown: false,
             }}>
-            <>
-                <Stack.Screen name="FrontScreen" component={FrontScreen} />
-                <Stack.Screen
-                    name="SignUp"
-                    component={SignUpStackNavigator}
-                    options={{
-                        ...TransitionPresets.FadeFromBottomAndroid,
-                    }}
-                />
-                <Stack.Screen
-                    name="SignIn"
-                    component={SignInStackNavigator}
-                    options={{
-                        ...TransitionPresets.FadeFromBottomAndroid,
-                    }}
-                />
-            </>
-        </Stack.Navigator>
-    ) : (
-        <Stack.Navigator>
-            <Stack.Screen name="Main" component={MainTabNavigator} options={{ headerShown: false }} />
+            <Stack.Screen name="FrontScreen" component={FrontScreen} />
             <Stack.Screen
-                name="Record"
-                component={Record}
-                options={({ navigation }) => ({
-                    headerTransparent: true,
-                    headerTitle: '',
-                    headerLeft: () => (
-                        <Pressable onPress={() => navigation.goBack()}>
-                            <MaterialIcons
-                                color={color.button.primary}
-                                name="arrow-back-ios"
-                                size={26}
-                                style={{ marginLeft: 20 }}
-                            />
-                        </Pressable>
-                    ),
+                name="SignUp"
+                component={SignUpStackNavigator}
+                options={{
                     ...TransitionPresets.FadeFromBottomAndroid,
-                })}
+                }}
+            />
+            <Stack.Screen
+                name="SignIn"
+                component={SignInStackNavigator}
+                options={{
+                    ...TransitionPresets.FadeFromBottomAndroid,
+                }}
             />
         </Stack.Navigator>
+    ) : (
+        <>
+            <StatusBar barStyle="dark-content" />
+            <Stack.Navigator>
+                <Stack.Screen name="Main" component={MainTabNavigator} options={{ headerShown: false }} />
+                <Stack.Screen
+                    name="Record"
+                    component={Record}
+                    options={({ navigation }) => ({
+                        headerTransparent: true,
+                        headerTitle: '',
+                        headerLeft: () => (
+                            <Pressable onPress={() => navigation.goBack()}>
+                                <MaterialIcons
+                                    color={color.button.primary}
+                                    name="arrow-back-ios"
+                                    size={26}
+                                    style={{ marginLeft: 20 }}
+                                />
+                            </Pressable>
+                        ),
+                        ...TransitionPresets.FadeFromBottomAndroid,
+                    })}
+                />
+            </Stack.Navigator>
+        </>
     );
 };
 
