@@ -9,7 +9,11 @@ const Tab = createMaterialBottomTabNavigator<MainTabParamList>();
 /** Main Navigation */
 const MainTabNavigator = () => {
     return (
-        <Tab.Navigator activeColor="#f0edf6" inactiveColor="#3e2465">
+        <Tab.Navigator
+            shifting={true}
+            activeColor="#f0edf6"
+            inactiveColor="#f0edf6aa"
+            screenOptions={{ tabBarColor: '#036B3F' }}>
             <Tab.Screen
                 name="HomeNavigator"
                 component={HomeStackNavigator}

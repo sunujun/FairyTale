@@ -190,11 +190,11 @@ const styles = StyleSheet.create({
         width: standardWidth(60),
         height: standardHeight(28),
         borderWidth: 1,
-        borderColor: 'blue',
+        borderColor: '#036B3F',
         alignItems: 'center',
         justifyContent: 'center',
         marginRight: -1,
-        elevation: 1,
+        zIndex: 1,
     },
     unselectedFilterBox: {
         width: standardWidth(60),
@@ -208,7 +208,7 @@ const styles = StyleSheet.create({
     selectedFilterText: {
         fontWeight: 'bold',
         fontSize: standardFontSize(12),
-        color: 'blue',
+        color: '#036B3F',
     },
     unselectedFilterText: {
         fontWeight: 'bold',
