@@ -6,7 +6,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import { color, standardWidth } from 'styles';
 import { MainTabNavigator, RootStackParamList, SignInStackNavigator, SignUpStackNavigator } from 'navigation';
-import { BookInformation, FrontScreen, Record } from 'screens';
+import { BookInformation, FrontScreen, Player, Record } from 'screens';
 import { RootState } from 'redux/store/reducers';
 
 /** https://reactnavigation.org/docs/typescript/#type-checking-the-navigator */
@@ -63,7 +63,7 @@ const RootStackNavigator = () => {
     //     getTokenAndRefresh();
     // }, [dispatch]);
 
-    return !isLoggedIn ? (
+    return isLoggedIn ? (
         <Stack.Navigator
             screenOptions={{
                 headerShown: false,
@@ -150,6 +150,25 @@ const RootStackNavigator = () => {
                             </Pressable>
                         ),
                         ...TransitionPresets.FadeFromBottomAndroid,
+                    })}
+                />
+                <Stack.Screen
+                    name="Player"
+                    component={Player}
+                    options={({ navigation }) => ({
+                        headerTransparent: true,
+                        headerTitle: '',
+                        headerLeft: () => (
+                            <Pressable onPress={() => navigation.goBack()}>
+                                <MaterialIcons
+                                    color={color.button.primary}
+                                    name="arrow-back-ios"
+                                    size={26}
+                                    style={styles.headerLeft}
+                                />
+                            </Pressable>
+                        ),
+                        ...TransitionPresets.SlideFromRightIOS,
                     })}
                 />
             </Stack.Navigator>

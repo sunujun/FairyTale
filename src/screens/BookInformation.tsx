@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
 import { color, standardFontSize, standardHeight, standardWidth } from 'styles';
 import { RootStackParamList } from 'navigation';
-import { RouteProp, useRoute } from '@react-navigation/native';
 
 type RootStackRouteProp = RouteProp<RootStackParamList, 'BookInformation'>;
-
+type RootStackProp = StackNavigationProp<RootStackParamList, 'Main'>;
 interface FilterButtonProps {
     /** key  */
     key: string;
@@ -16,6 +17,7 @@ interface FilterButtonProps {
 
 /** 홈에서 책 선택 시, 발생하는 화면 */
 const BookInformation = () => {
+    const navigation = useNavigation<RootStackProp>();
     const route = useRoute<RootStackRouteProp>();
     /** 언어 필터 종류 */
     const languageFilterData: FilterButtonProps[] = [
@@ -87,7 +89,11 @@ const BookInformation = () => {
                     <Text style={styles.subtitleText}>줄거리</Text>
                     <Text style={styles.summaryText}>{route.params?.bookData.summary}</Text>
                 </View>
-                <Pressable style={styles.button}>
+                <Pressable
+                    style={styles.button}
+                    onPress={() => {
+                        navigation.navigate('Player', { bookData: route.params?.bookData });
+                    }}>
                     <Text style={styles.buttonText}>재생하기</Text>
                 </Pressable>
             </View>

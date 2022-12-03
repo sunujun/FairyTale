@@ -5,10 +5,10 @@ import { RouteProp, useRoute } from '@react-navigation/native';
 import { PlayerControls, Progress, TrackInfo } from 'components';
 import { useCurrentTrack } from 'hooks';
 import { SetupService } from 'services';
-import { HomeStackParamList } from 'navigation';
+import { RootStackParamList } from 'navigation';
 import { standardHeight } from 'styles';
 
-type HomeTabRouteProp = RouteProp<HomeStackParamList, 'Player'>;
+type HomeTabRouteProp = RouteProp<RootStackParamList, 'Player'>;
 
 /** 재생 화면 */
 const Player = () => {

@@ -5,6 +5,7 @@ export type RootStackParamList = {
     Main: undefined;
     Record: undefined;
     BookInformation: { bookData: BookProps };
+    Player: { bookData: BookProps };
 };
 
 export type SignUpStackParamList = {
@@ -36,8 +37,3 @@ interface BookProps {
     summary: string;
     url: any;
 }
-
-export type HomeStackParamList = {
-    Home: undefined;
-    Player: { bookData: BookProps };
-};
