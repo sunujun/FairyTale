@@ -19,7 +19,7 @@ export type SignInStackParamList = {
 };
 
 export type MainTabParamList = {
-    HomeNavigator: undefined;
+    Home: undefined;
     RecordStart: undefined;
     MyPage: undefined;
 };
