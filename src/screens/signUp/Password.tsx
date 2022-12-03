@@ -13,6 +13,7 @@ type PasswordScreenProp = StackNavigationProp<SignUpStackParamList, 'Password'>;
 
 const Background = styled(View)`
     flex: 1;
+    background-color: ${color.text.caution3};
     padding-top: ${StatusBar.currentHeight}px;
 `;
 
