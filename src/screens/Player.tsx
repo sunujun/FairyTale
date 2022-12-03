@@ -6,7 +6,7 @@ import { PlayerControls, Progress, TrackInfo } from 'components';
 import { useCurrentTrack } from 'hooks';
 import { SetupService } from 'services';
 import { RootStackParamList } from 'navigation';
-import { standardHeight } from 'styles';
+import { color, standardHeight } from 'styles';
 
 type HomeTabRouteProp = RouteProp<RootStackParamList, 'Player'>;
 
@@ -58,18 +58,17 @@ const Player = () => {
 const styles = StyleSheet.create({
     screenContainer: {
         flex: 1,
-        backgroundColor: '#212121',
+        backgroundColor: color.background.primary,
         alignItems: 'center',
         justifyContent: 'center',
     },
     contentContainer: {
-        flex: 3,
         alignItems: 'center',
         paddingTop: standardHeight(56),
     },
     actionRowContainer: {
-        flex: 1,
         flexDirection: 'row',
+        marginTop: standardHeight(24),
     },
 });
 

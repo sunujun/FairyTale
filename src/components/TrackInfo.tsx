@@ -1,6 +1,7 @@
 import React from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
 import type { Track } from 'react-native-track-player';
+import { color } from 'styles';
 
 export interface TrackInfoProps {
     track?: Track;
@@ -29,12 +30,12 @@ const styles = StyleSheet.create({
     titleText: {
         fontSize: 18,
         fontWeight: '600',
-        color: 'white',
+        color: color.text.primary2,
         marginTop: 30,
     },
     artistText: {
         fontSize: 16,
         fontWeight: '200',
-        color: 'white',
+        color: color.text.primary1,
     },
 });
