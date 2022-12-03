@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ActivityIndicator, SafeAreaView, StatusBar, StyleSheet, View } from 'react-native';
+import { ActivityIndicator, SafeAreaView, StyleSheet, View } from 'react-native';
 import TrackPlayer from 'react-native-track-player';
 import { RouteProp, useRoute } from '@react-navigation/native';
 import { PlayerControls, Progress, TrackInfo } from 'components';
@@ -44,7 +44,6 @@ const Player = () => {
 
     return (
         <SafeAreaView style={styles.screenContainer}>
-            <StatusBar barStyle={'light-content'} />
             <View style={styles.contentContainer}>
                 <TrackInfo track={track} />
                 <Progress live={track?.isLiveStream} />

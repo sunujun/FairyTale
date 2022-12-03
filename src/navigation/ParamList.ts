@@ -21,7 +21,7 @@ export type SignInStackParamList = {
 export type MainTabParamList = {
     HomeNavigator: undefined;
     RecordStart: undefined;
-    Settings: undefined;
+    MyPage: undefined;
 };
 
 interface BookProps {

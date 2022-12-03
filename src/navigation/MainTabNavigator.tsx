@@ -2,7 +2,7 @@ import React from 'react';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { HomeStackNavigator, MainTabParamList } from 'navigation';
-import { RecordStart, Settings } from 'screens';
+import { MyPage, RecordStart } from 'screens';
 
 const Tab = createMaterialBottomTabNavigator<MainTabParamList>();
 
@@ -31,10 +31,10 @@ const MainTabNavigator = () => {
                 }}
             />
             <Tab.Screen
-                name="Settings"
-                component={Settings}
+                name="MyPage"
+                component={MyPage}
                 options={{
-                    tabBarLabel: 'Settings',
+                    tabBarLabel: 'MyPage',
                     tabBarIcon: ({ color }) => <MaterialCommunityIcons name="account" color={color} size={26} />,
                 }}
             />

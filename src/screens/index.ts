@@ -7,6 +7,6 @@ export { default as SignInIdentifier } from './signIn/Identifier';
 export { default as SignInPassword } from './signIn/Password';
 export { default as Home } from './Home';
 export { default as Record } from './Record';
-export { default as Settings } from './Settings';
+export { default as MyPage } from './MyPage';
 export { default as Player } from './Player';
 export { default as RecordStart } from './RecordStart';
