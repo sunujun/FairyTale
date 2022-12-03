@@ -1,11 +1,12 @@
-import React from 'react';
-import { Pressable, StatusBar } from 'react-native';
+import React, { useState } from 'react';
+import { Pressable, StatusBar, StyleSheet, ToastAndroid } from 'react-native';
 import { useSelector } from 'react-redux';
 import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import { color } from 'styles';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import { color, standardWidth } from 'styles';
 import { MainTabNavigator, RootStackParamList, SignInStackNavigator, SignUpStackNavigator } from 'navigation';
-import { FrontScreen, Record } from 'screens';
+import { BookInformation, FrontScreen, Player, Record } from 'screens';
 import { RootState } from 'redux/store/reducers';
 
 /** https://reactnavigation.org/docs/typescript/#type-checking-the-navigator */
@@ -13,8 +14,18 @@ const Stack = createStackNavigator<RootStackParamList>();
 
 /** 초기 화면 */
 const RootStackNavigator = () => {
+    /** 로그인 체크 */
     const isLoggedIn = useSelector((state: RootState) => !!state.user.email);
+    /** 관심 동화 */
+    const [isInterested, setIsInterested] = useState(false);
 
+    const showToast = (prevState: boolean) => {
+        if (prevState) {
+            ToastAndroid.show('관심 동화에서 삭제되었습니다', ToastAndroid.SHORT);
+        } else {
+            ToastAndroid.show('관심 동화로 등록되었습니다', ToastAndroid.SHORT);
+        }
+    };
     // 앱 실행 시 토큰 존재하면 로그인 활성화
     // useEffect(() => {
     //     const getTokenAndRefresh = async () => {
@@ -90,16 +101,88 @@ const RootStackNavigator = () => {
                                     color={color.button.primary}
                                     name="arrow-back-ios"
                                     size={26}
-                                    style={{ marginLeft: 20 }}
+                                    style={styles.headerLeft}
                                 />
                             </Pressable>
                         ),
                         ...TransitionPresets.FadeFromBottomAndroid,
                     })}
                 />
+                <Stack.Screen
+                    name="BookInformation"
+                    component={BookInformation}
+                    options={({ navigation }) => ({
+                        headerTransparent: true,
+                        headerTitle: '',
+                        headerLeft: () => (
+                            <Pressable onPress={() => navigation.goBack()}>
+                                <MaterialIcons
+                                    color={color.button.primary}
+                                    name="arrow-back-ios"
+                                    size={26}
+                                    style={styles.headerLeft}
+                                />
+                            </Pressable>
+                        ),
+                        headerRight: () => (
+                            <Pressable
+                                onPress={() => {
+                                    setIsInterested(prev => {
+                                        showToast(prev);
+                                        return !prev;
+                                    });
+                                }}>
+                                {isInterested ? (
+                                    <AntDesign
+                                        color={color.button.primary}
+                                        name="star"
+                                        size={26}
+                                        style={styles.headerRight}
+                                    />
+                                ) : (
+                                    <AntDesign
+                                        color={color.button.primary}
+                                        name="staro"
+                                        size={26}
+                                        style={styles.headerRight}
+                                    />
+                                )}
+                            </Pressable>
+                        ),
+                        ...TransitionPresets.FadeFromBottomAndroid,
+                    })}
+                />
+                <Stack.Screen
+                    name="Player"
+                    component={Player}
+                    options={({ navigation }) => ({
+                        headerTransparent: true,
+                        headerTitle: '',
+                        headerLeft: () => (
+                            <Pressable onPress={() => navigation.goBack()}>
+                                <MaterialIcons
+                                    color={color.button.primary}
+                                    name="arrow-back-ios"
+                                    size={26}
+                                    style={styles.headerLeft}
+                                />
+                            </Pressable>
+                        ),
+                        ...TransitionPresets.SlideFromRightIOS,
+                    })}
+                />
             </Stack.Navigator>
         </>
     );
 };
+
+const styles = StyleSheet.create({
+    headerLeft: {
+        marginLeft: standardWidth(20),
+    },
+    headerRight: {
+        marginRight: standardWidth(20),
+    },
+});
 
 export default RootStackNavigator;

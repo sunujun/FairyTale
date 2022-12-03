@@ -10,3 +10,4 @@ export { default as Record } from './Record';
 export { default as MyPage } from './MyPage';
 export { default as Player } from './Player';
 export { default as RecordStart } from './RecordStart';
+export { default as BookInformation } from './BookInformation';

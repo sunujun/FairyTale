@@ -13,6 +13,8 @@ export default {
         hint: '#BBBBBB',
         /** ![](https://www.colorhexa.com/036B3F.png) */
         main: '#036B3F',
+        /** ![](https://www.colorhexa.com/83C390.png) */
+        disabled: '#83C390',
         /** ![](https://www.colorhexa.com/FFFFFF.png) */
         button: '#FFFFFF',
         /** ![](https://www.colorhexa.com/FDF3D6.png) */
@@ -30,8 +32,8 @@ export default {
         primary: '#036B3F',
         /** ![](https://www.colorhexa.com/FFFFFF.png) */
         secondary: '#FFFFFF',
-        /** ![](https://www.colorhexa.com/5E4E0B.png) */
-        disabled: '#5E4E0B',
+        /** ![](https://www.colorhexa.com/83C390.png) */
+        disabled: '#83C390',
         /** ![](https://www.colorhexa.com/EEEEEE.png) */
         border: '#EEEEEE',
     },

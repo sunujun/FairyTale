@@ -1,8 +1,9 @@
 import React from 'react';
-import { ActivityIndicator, StyleSheet, View } from 'react-native';
+import { ActivityIndicator, Pressable, StyleSheet, View } from 'react-native';
 import { State, usePlaybackState } from 'react-native-track-player';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useOnTogglePlayback, useDebouncedValue } from 'hooks';
-import { Button } from 'components';
+import { color } from 'styles';
 
 export const PlayPauseButton: React.FC = () => {
     const state = usePlaybackState();
@@ -16,12 +17,13 @@ export const PlayPauseButton: React.FC = () => {
     }
 
     return (
-        <Button
-            title={isPlaying ? 'Pause' : 'Play'}
-            onPress={onTogglePlayback}
-            type="primary"
-            style={styles.playPause}
-        />
+        <Pressable onPress={onTogglePlayback}>
+            {isPlaying ? (
+                <Ionicons color={color.button.primary} name="pause" size={52} />
+            ) : (
+                <Ionicons color={color.button.primary} name="play" size={52} />
+            )}
+        </Pressable>
     );
 };
 
