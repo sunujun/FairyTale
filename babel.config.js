@@ -9,6 +9,7 @@ module.exports = {
                 alias: {
                     underscore: 'lodash',
                     mp3: './assets/mp3',
+                    images: './assets/images',
                 },
             },
         ],

@@ -1,8 +1,11 @@
 import React from 'react';
+import { Pressable } from 'react-native';
 import { useSelector } from 'react-redux';
 import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import { color } from 'styles';
 import { MainTabNavigator, RootStackParamList, SignInStackNavigator, SignUpStackNavigator } from 'navigation';
-import { FrontScreen } from 'screens';
+import { FrontScreen, Record } from 'screens';
 import { RootState } from 'redux/store/reducers';
 
 /** https://reactnavigation.org/docs/typescript/#type-checking-the-navigator */
@@ -73,11 +76,27 @@ const RootStackNavigator = () => {
             </>
         </Stack.Navigator>
     ) : (
-        <Stack.Navigator
-            screenOptions={{
-                headerShown: false,
-            }}>
-            <Stack.Screen name="Main" component={MainTabNavigator} />
+        <Stack.Navigator>
+            <Stack.Screen name="Main" component={MainTabNavigator} options={{ headerShown: false }} />
+            <Stack.Screen
+                name="Record"
+                component={Record}
+                options={({ navigation }) => ({
+                    headerTransparent: true,
+                    headerTitle: '',
+                    headerLeft: () => (
+                        <Pressable onPress={() => navigation.goBack()}>
+                            <MaterialIcons
+                                color={color.button.primary}
+                                name="arrow-back-ios"
+                                size={26}
+                                style={{ marginLeft: 20 }}
+                            />
+                        </Pressable>
+                    ),
+                    ...TransitionPresets.FadeFromBottomAndroid,
+                })}
+            />
         </Stack.Navigator>
     );
 };

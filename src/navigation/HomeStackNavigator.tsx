@@ -4,6 +4,7 @@ import { createStackNavigator, TransitionPresets } from '@react-navigation/stack
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { HomeStackParamList } from 'navigation';
 import { Home, Player } from 'screens';
+import { color } from 'styles';
 
 const Stack = createStackNavigator<HomeStackParamList>();
 
@@ -24,7 +25,12 @@ const HomeStackNavigator = () => {
                     headerTransparent: true,
                     headerLeft: () => (
                         <Pressable onPress={() => navigation.goBack()}>
-                            <MaterialIcons color={'white'} name="arrow-back-ios" size={26} style={{ marginLeft: 20 }} />
+                            <MaterialIcons
+                                color={color.button.primary}
+                                name="arrow-back-ios"
+                                size={26}
+                                style={{ marginLeft: 20 }}
+                            />
                         </Pressable>
                     ),
                 })}

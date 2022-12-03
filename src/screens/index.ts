@@ -9,3 +9,4 @@ export { default as Home } from './Home';
 export { default as Record } from './Record';
 export { default as Settings } from './Settings';
 export { default as Player } from './Player';
+export { default as RecordStart } from './RecordStart';

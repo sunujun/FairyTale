@@ -3,6 +3,7 @@ export type RootStackParamList = {
     SignUp: undefined;
     SignIn: undefined;
     Main: undefined;
+    Record: undefined;
 };
 
 export type SignUpStackParamList = {
@@ -19,7 +20,7 @@ export type SignInStackParamList = {
 
 export type MainTabParamList = {
     HomeNavigator: undefined;
-    Record: undefined;
+    RecordStart: undefined;
     Settings: undefined;
 };
 

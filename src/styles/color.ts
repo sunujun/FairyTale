@@ -11,8 +11,10 @@ export default {
         secondary2: '#999999',
         /** ![](https://www.colorhexa.com/bbbbbb.png) */
         hint: '#bbbbbb',
-        /** ![](https://www.colorhexa.com/a26077.png) */
-        main: '#98556c',
+        /** ![](https://www.colorhexa.com/036b3f.png) */
+        main: '#036b3f',
+        /** ![](https://www.colorhexa.com/f0edf6.png) */
+        button: '#f0edf6',
         /** ![](https://www.colorhexa.com/ff5e73.png) */
         caution1: '#ff5e73',
         /** ![](https://www.colorhexa.com/166bff.png) */
@@ -22,8 +24,8 @@ export default {
     divider: '#eeeeee',
     /** 버튼 색상 */
     button: {
-        /** ![](https://www.colorhexa.com/98556c.png) */
-        primary: '#98556c',
+        /** ![](https://www.colorhexa.com/036b3f.png) */
+        primary: '#036b3f',
         /** ![](https://www.colorhexa.com/fff3f1.png) */
         secondary: '#fff3f1',
         /** ![](https://www.colorhexa.com/ffffff.png) */
@@ -35,8 +37,8 @@ export default {
     },
     /** 배경 색상 */
     background: {
-        /** ![](https://www.colorhexa.com/ffffff.png) */
-        primary: '#ffffff',
+        /** ![](https://www.colorhexa.com/f0edf6.png) */
+        primary: '#f0edf6',
         /** ![](https://www.colorhexa.com/f5f5f5.png) */
         secondary: '#f5f5f5',
     },

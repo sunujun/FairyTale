@@ -1,5 +1,14 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { PermissionsAndroid, Platform, Pressable, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import {
+    PermissionsAndroid,
+    Platform,
+    Pressable,
+    StyleSheet,
+    Text,
+    ToastAndroid,
+    TouchableOpacity,
+    View,
+} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import AudioRecorderPlayer, {
     AVEncoderAudioQualityIOSType,
@@ -8,11 +17,18 @@ import AudioRecorderPlayer, {
     AudioSourceAndroidType,
     OutputFormatAndroidType,
 } from 'react-native-audio-recorder-player';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { useNavigation } from '@react-navigation/native';
 import type { AudioSet, PlayBackType, RecordBackType } from 'react-native-audio-recorder-player';
-import { standardWidth } from 'styles';
+import { color, standardFontSize, standardHeight, standardWidth } from 'styles';
+import { RootStackParamList } from 'navigation';
+
+type RootStackProp = StackNavigationProp<RootStackParamList, 'Record'>;
 
 /** 녹음 화면 */
 const Record = () => {
+    const navigation = useNavigation<RootStackProp>();
+
     /** 녹음 파일 저장 위치 */
     const path = Platform.select({
         ios: undefined,
@@ -68,7 +84,7 @@ const Record = () => {
                     PermissionsAndroid.PERMISSIONS.RECORD_AUDIO,
                 ]);
 
-                console.log('write external stroage', grants);
+                console.log('write external storage', grants);
 
                 if (
                     grants['android.permission.WRITE_EXTERNAL_STORAGE'] === PermissionsAndroid.RESULTS.GRANTED &&
@@ -170,43 +186,49 @@ const Record = () => {
         }
     }, [currentDurationSec, currentPositionSec]);
 
+    const showToast = () => {
+        ToastAndroid.show('녹음 제출이 완료되었습니다', ToastAndroid.SHORT);
+    };
+
     return (
         <SafeAreaView style={styles.container}>
-            <Text style={styles.titleText}>Audio Recorder Player</Text>
+            <View style={styles.sampleTextWrapper}>
+                <Text style={styles.sampleText}>
+                    물방아 같은 심장의 고동을 들어 보라 청춘의 피는 끓는다 끓는 피에 뛰노는 심장은 거선의 기관과 같이
+                    {'\n\n'}
+                    가슴에 대고 물방아 같은 심장의 고동을 들어 보라 청춘의 피는 끓는다 끓는 피에 뛰노는 심장은 거선의
+                    기관과 같이 힘있다 이것이다 인류의 역사를 꾸며 내려온 동력은 바로 이것이다 이성은 투명하되 얼음과
+                    같으며 지혜는 날카로우나 갑 속에 든 칼이다 청춘의 끓는 피가 아니더면 인간이
+                </Text>
+            </View>
+            <Text style={styles.titleText}>녹음</Text>
             <Text style={styles.textRecordCounter}>{recordTime}</Text>
             <View style={styles.viewRecorder}>
                 <View style={styles.recordButtonWrapper}>
-                    <Pressable onPress={() => onStartRecord()}>
-                        <Text style={styles.button}>Record</Text>
+                    <Pressable
+                        style={({ pressed }) => conditionalStyles(pressed, false).button}
+                        onPress={() => onStartRecord()}>
+                        <Text style={styles.text}>Record</Text>
                     </Pressable>
-                    <Pressable onPress={() => onPauseRecord()}>
-                        <Text
-                            style={[
-                                styles.button,
-                                {
-                                    marginLeft: 12,
-                                },
-                            ]}>
-                            Pause
-                        </Text>
+                    <Pressable
+                        style={({ pressed }) => conditionalStyles(pressed, true).button}
+                        onPress={() => onPauseRecord()}>
+                        <Text style={styles.text}>Pause</Text>
                     </Pressable>
-                    <Pressable onPress={() => onResumeRecord()}>
-                        <Text
-                            style={[
-                                styles.button,
-                                {
-                                    marginLeft: 12,
-                                },
-                            ]}>
-                            Resume
-                        </Text>
+                    <Pressable
+                        style={({ pressed }) => conditionalStyles(pressed, true).button}
+                        onPress={() => onResumeRecord()}>
+                        <Text style={styles.text}>Resume</Text>
                     </Pressable>
-                    <Pressable onPress={() => onStopRecord()}>
-                        <Text style={[styles.button, { marginLeft: 12 }]}>Stop</Text>
+                    <Pressable
+                        style={({ pressed }) => conditionalStyles(pressed, true).button}
+                        onPress={() => onStopRecord()}>
+                        <Text style={styles.text}>Stop</Text>
                     </Pressable>
                 </View>
             </View>
             <View style={styles.viewPlayer}>
+                <Text style={styles.titleText}>녹음 파일 확인</Text>
                 <TouchableOpacity style={styles.viewBarWrapper} onPress={event => onStatusPress(event)}>
                     <View style={styles.viewBar}>
                         <View style={[styles.viewBarPlay, { width: playWidth }]} />
@@ -216,44 +238,36 @@ const Record = () => {
                     {playTime} / {duration}
                 </Text>
                 <View style={styles.playButtonWrapper}>
-                    <Pressable onPress={() => onStartPlay()}>
-                        <Text style={styles.button}>Play</Text>
+                    <Pressable
+                        style={({ pressed }) => conditionalStyles(pressed, false).button}
+                        onPress={() => onStartPlay()}>
+                        <Text style={styles.text}>Play</Text>
                     </Pressable>
-                    <Pressable onPress={() => onPausePlay()}>
-                        <Text
-                            style={[
-                                styles.button,
-                                {
-                                    marginLeft: 12,
-                                },
-                            ]}>
-                            Pause
-                        </Text>
+                    <Pressable
+                        style={({ pressed }) => conditionalStyles(pressed, true).button}
+                        onPress={() => onPausePlay()}>
+                        <Text style={styles.text}>Pause</Text>
                     </Pressable>
-                    <Pressable onPress={() => onResumePlay()}>
-                        <Text
-                            style={[
-                                styles.button,
-                                {
-                                    marginLeft: 12,
-                                },
-                            ]}>
-                            Resume
-                        </Text>
+                    <Pressable
+                        style={({ pressed }) => conditionalStyles(pressed, true).button}
+                        onPress={() => onResumePlay()}>
+                        <Text style={styles.text}>Resume</Text>
                     </Pressable>
-                    <Pressable onPress={() => onStopPlay()}>
-                        <Text
-                            style={[
-                                styles.button,
-                                {
-                                    marginLeft: 12,
-                                },
-                            ]}>
-                            Stop
-                        </Text>
+                    <Pressable
+                        style={({ pressed }) => conditionalStyles(pressed, true).button}
+                        onPress={() => onStopPlay()}>
+                        <Text style={styles.text}>Stop</Text>
                     </Pressable>
                 </View>
             </View>
+            <Pressable
+                style={styles.submitButton}
+                onPress={() => {
+                    showToast();
+                    navigation.goBack();
+                }}>
+                <Text style={styles.submitButtonText}>녹음 제출</Text>
+            </Pressable>
         </SafeAreaView>
     );
 };
@@ -261,77 +275,113 @@ const Record = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#455A64',
-        flexDirection: 'column',
+        backgroundColor: color.background.primary,
         alignItems: 'center',
     },
+    sampleTextWrapper: {
+        marginHorizontal: standardWidth(30),
+        borderColor: color.button.primary,
+        borderRadius: standardWidth(4),
+        marginTop: standardWidth(56),
+        paddingVertical: standardHeight(12),
+        paddingHorizontal: standardHeight(8),
+        borderWidth: 1,
+    },
+    sampleText: {
+        color: color.text.primary1,
+        fontSize: standardFontSize(16),
+    },
     titleText: {
-        marginTop: 100,
-        color: 'white',
-        fontSize: 28,
+        color: color.text.primary1,
+        fontSize: standardFontSize(18),
+        fontWeight: 'bold',
+        marginTop: standardHeight(24),
     },
     viewRecorder: {
-        marginTop: 40,
-        width: '100%',
+        width: standardWidth(360),
         alignItems: 'center',
     },
     recordButtonWrapper: {
         flexDirection: 'row',
+        marginTop: standardHeight(8),
     },
     viewPlayer: {
-        marginTop: 60,
         alignSelf: 'stretch',
         alignItems: 'center',
     },
     viewBarWrapper: {
-        marginTop: 28,
         marginHorizontal: standardWidth(30),
         alignSelf: 'stretch',
+        marginTop: standardHeight(8),
     },
     viewBar: {
-        backgroundColor: '#ccc',
-        height: 4,
+        backgroundColor: color.text.hint,
+        height: standardHeight(4),
         alignSelf: 'stretch',
     },
     viewBarPlay: {
-        backgroundColor: 'white',
-        height: 4,
+        backgroundColor: color.button.primary,
+        height: standardHeight(4),
         width: 0,
     },
     playStatusText: {
         marginTop: 8,
-        color: '#ccc',
+        color: color.text.hint,
     },
     playButtonWrapper: {
         flexDirection: 'row',
-        marginTop: 40,
+        marginTop: standardHeight(8),
     },
     button: {
-        borderColor: 'white',
+        borderColor: color.button.primary,
         borderWidth: 1,
     },
     text: {
-        color: 'white',
-        fontSize: 14,
-        marginHorizontal: 8,
-        marginVertical: 4,
+        color: color.text.main,
+        fontSize: standardFontSize(14),
+        marginHorizontal: standardWidth(8),
+        marginVertical: standardHeight(4),
     },
     textRecordCounter: {
-        marginTop: 32,
-        color: 'white',
+        color: color.text.secondary1,
         fontSize: 20,
         textAlignVertical: 'center',
         fontWeight: '200',
-        letterSpacing: 3,
+        letterSpacing: 2,
+        marginTop: standardHeight(8),
     },
     textCounter: {
-        marginTop: 12,
-        color: 'white',
+        color: color.text.secondary1,
         fontSize: 20,
         textAlignVertical: 'center',
         fontWeight: '200',
-        letterSpacing: 3,
+        letterSpacing: 2,
+        marginTop: standardHeight(8),
+    },
+    submitButton: {
+        width: standardWidth(310),
+        height: standardHeight(40),
+        backgroundColor: color.button.primary,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: standardWidth(4),
+        marginTop: standardHeight(24),
+    },
+    submitButtonText: {
+        fontSize: standardFontSize(18),
+        color: color.text.button,
+        fontWeight: 'bold',
     },
 });
+
+const conditionalStyles = (pressed: boolean, isMarginLeft: boolean) =>
+    StyleSheet.create({
+        button: {
+            borderColor: color.button.primary,
+            borderWidth: 1,
+            marginLeft: isMarginLeft ? standardWidth(12) : 0,
+            opacity: pressed ? 0.5 : 1,
+        },
+    });
 
 export default Record;
