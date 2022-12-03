@@ -172,7 +172,7 @@ const styles = StyleSheet.create({
     },
     searchBox: {
         borderRadius: 4,
-        borderColor: '#999999',
+        borderColor: color.text.secondary2,
         borderWidth: 2,
         width: standardWidth(320),
         height: standardHeight(44),
@@ -197,7 +197,7 @@ const styles = StyleSheet.create({
         width: standardWidth(60),
         height: standardHeight(28),
         borderWidth: 1,
-        borderColor: '#036B3F',
+        borderColor: color.button.primary,
         alignItems: 'center',
         justifyContent: 'center',
         marginRight: -1,
@@ -207,7 +207,7 @@ const styles = StyleSheet.create({
         width: standardWidth(60),
         height: standardHeight(28),
         borderWidth: 1,
-        borderColor: '#999999',
+        borderColor: color.text.secondary2,
         alignItems: 'center',
         justifyContent: 'center',
         marginRight: -1,
@@ -215,15 +215,15 @@ const styles = StyleSheet.create({
     selectedFilterText: {
         fontWeight: 'bold',
         fontSize: standardFontSize(12),
-        color: '#036B3F',
+        color: color.text.main,
     },
     unselectedFilterText: {
         fontWeight: 'bold',
         fontSize: standardFontSize(12),
-        color: '#999999',
+        color: color.text.secondary2,
     },
     separator: {
-        backgroundColor: '#999999',
+        backgroundColor: color.text.secondary2,
         height: 1,
     },
     bookList: {
