@@ -1,35 +1,11 @@
 import React from 'react';
-import { Pressable, Text, View, Image } from 'react-native';
-import styled from 'styled-components';
+import { Pressable, Text, View, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import FastImage from 'react-native-fast-image';
 import { RootStackParamList } from 'navigation';
 import { color, standardFontSize, standardHeight, standardWidth } from 'styles';
-
-const Background = styled(View)`
-    flex: 1;
-    align-items: center;
-    justify-content: flex-end;
-    background-color: ${color.text.caution1};
-    padding-bottom: ${standardHeight(40)}px;
-`;
-
-const LoginButton = styled(Pressable)`
-    width: ${standardWidth(200)}px;
-    height: ${standardHeight(40)}px;
-    background-color: ${color.button.secondary};
-    justify-content: center;
-    align-items: center;
-    border-radius: ${standardWidth(40)}px;
-    margin-bottom: ${standardHeight(20)}px;
-`;
-
-const ButtonText = styled(Text)`
-    font-size: ${standardFontSize(18)}px;
-    font-color: ${color.text.main};
-    font-weight: bold;
-`;
 
 type FrontScreenProp = StackNavigationProp<RootStackParamList, 'FrontScreen'>;
 
@@ -38,23 +14,74 @@ const FrontScreen = () => {
     const navigation = useNavigation<FrontScreenProp>();
 
     return (
-        <SafeAreaView mode="margin" edges={['right', 'left', 'bottom']} style={{ flex: 1 }}>
-            <Background>
-                <Image source={require('images/fairytale.png')} style={{ width: 450, height: 150 }} />
-                <Image source={require('images/book.png')} style={{ width: 200, height: 170 }} />
-                <Image
-                    source={require('images/leaf-shapes.png')}
-                    style={{ width: '100%', height: 80, position: 'absolute', padding: 230 }}
+        <SafeAreaView mode="margin" edges={['right', 'left', 'bottom']} style={styles.safeArea}>
+            <View style={styles.container}>
+                <FastImage
+                    source={require('images/fairytale.png')}
+                    style={styles.titleImage}
+                    resizeMode={FastImage.resizeMode.contain}
                 />
-                <LoginButton onPress={() => navigation.navigate('SignUp')}>
-                    <ButtonText>회원가입</ButtonText>
-                </LoginButton>
-                <LoginButton onPress={() => navigation.navigate('SignIn')}>
-                    <ButtonText>로그인</ButtonText>
-                </LoginButton>
-            </Background>
+                <FastImage
+                    source={require('images/book.png')}
+                    style={styles.bookImage}
+                    resizeMode={FastImage.resizeMode.contain}
+                />
+                <FastImage
+                    source={require('images/leaf-shapes.png')}
+                    style={styles.leafImage}
+                    resizeMode={FastImage.resizeMode.contain}
+                />
+                <Pressable style={styles.button} onPress={() => navigation.navigate('SignUp')}>
+                    <Text style={styles.buttonText}>회원가입</Text>
+                </Pressable>
+                <Pressable style={styles.button} onPress={() => navigation.navigate('SignIn')}>
+                    <Text style={styles.buttonText}>로그인</Text>
+                </Pressable>
+            </View>
         </SafeAreaView>
     );
 };
+
+const styles = StyleSheet.create({
+    safeArea: {
+        flex: 1,
+    },
+    container: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'flex-end',
+        backgroundColor: color.background.front,
+        paddingBottom: standardHeight(40),
+    },
+    titleImage: {
+        width: standardWidth(360),
+        height: standardHeight(200),
+    },
+    bookImage: {
+        width: standardWidth(200),
+        height: standardHeight(160),
+    },
+    leafImage: {
+        width: standardWidth(460),
+        height: standardHeight(460),
+        position: 'absolute',
+        bottom: standardHeight(-40),
+        left: 0,
+    },
+    button: {
+        width: standardWidth(200),
+        height: standardHeight(40),
+        backgroundColor: color.button.secondary,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: standardWidth(40),
+        marginBottom: standardHeight(12),
+    },
+    buttonText: {
+        fontSize: standardFontSize(18),
+        color: color.text.main,
+        fontWeight: 'bold',
+    },
+});
 
 export default FrontScreen;

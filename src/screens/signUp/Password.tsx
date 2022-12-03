@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { Pressable, StatusBar, Text, View, TextInput } from 'react-native';
-import styled from 'styled-components';
+import { Pressable, StatusBar, Text, View, TextInput, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { SignUpStackParamList } from 'navigation';
@@ -11,36 +10,6 @@ import signUpSlice from 'redux/slices/signUp';
 
 type PasswordScreenProp = StackNavigationProp<SignUpStackParamList, 'Password'>;
 
-const Background = styled(View)`
-    flex: 1;
-    background-color: ${color.text.caution3};
-    padding-top: ${StatusBar.currentHeight}px;
-`;
-
-const Content = styled(View)`
-    flex: 1;
-    padding-horizontal: ${standardWidth(24)}px;
-`;
-
-const MainText = styled(Text)`
-    font-size: ${standardFontSize(24)}px;
-    font-color: ${color.text.secondary2};
-    font-weight: bold;
-`;
-
-const SubText = styled(Text)`
-    font-size: ${standardFontSize(16)}px;
-    font-color: ${color.text.main};
-`;
-
-const NextButton = styled(Pressable)`
-    height: ${standardHeight(44)}px;
-    background-color: ${color.button.primary};
-    justify-content: center;
-    align-items: center;
-    border-radius: ${standardWidth(4)}px;
-`;
-
 /** Password 입력 화면 */
 const Password = () => {
     const navigation = useNavigation<PasswordScreenProp>();
@@ -48,22 +17,19 @@ const Password = () => {
     const [password, setPassword] = useState('');
 
     return (
-        <SafeAreaView mode="margin" edges={['right', 'left', 'bottom']} style={{ flex: 1 }}>
-            <Background>
-                <Content>
-                    <MainText>비밀번호</MainText>
-                    <SubText>사용할 비밀번호를 입력하세요</SubText>
+        <SafeAreaView mode="margin" edges={['right', 'left', 'bottom']} style={styles.container}>
+            <View style={styles.background}>
+                <View style={styles.content}>
+                    <Text style={styles.mainText}>비밀번호</Text>
+                    <Text style={styles.subText}>사용할 비밀번호를 입력하세요</Text>
                     {/* TODO: 임시 비밀번호 입력 */}
-                    <TextInput
-                        style={{ borderBottomWidth: 1, borderBottomColor: 'black' }}
-                        onChangeText={text => setPassword(text)}
-                    />
-                </Content>
-            </Background>
+                    <TextInput style={styles.textInput} onChangeText={text => setPassword(text)} />
+                </View>
+            </View>
             {/* TODO: 텍스트 인풋에 비밀번호가 입력되어야 press 활성화, 비활성화/활성화 디자인 추가 */}
-            <NextButton
+            <Pressable
                 disabled={password === ''}
-                style={password === '' && { backgroundColor: color.button.disabled }}
+                style={dynamicStyles(password === '').button}
                 onPress={() => {
                     dispatch(
                         signUpSlice.actions.setPw({
@@ -72,10 +38,55 @@ const Password = () => {
                     );
                     navigation.navigate('CheckPassword');
                 }}>
-                <Text>다음</Text>
-            </NextButton>
+                <Text style={dynamicStyles(password === '').buttonText}>다음</Text>
+            </Pressable>
         </SafeAreaView>
     );
 };
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: color.background.primary,
+    },
+    background: {
+        flex: 1,
+        paddingTop: standardWidth(56) + (StatusBar.currentHeight as number),
+    },
+    content: {
+        flex: 1,
+        paddingHorizontal: standardWidth(24),
+    },
+    mainText: {
+        fontSize: standardFontSize(24),
+        color: color.text.primary2,
+        fontWeight: 'bold',
+    },
+    textInput: {
+        borderBottomWidth: 1,
+        borderBottomColor: color.divider,
+        marginTop: standardHeight(12),
+    },
+    subText: {
+        fontSize: standardFontSize(16),
+        color: color.text.primary1,
+        marginTop: standardHeight(4),
+    },
+});
+
+const dynamicStyles = (isDisabled: boolean) =>
+    StyleSheet.create({
+        button: {
+            height: standardHeight(44),
+            backgroundColor: isDisabled ? color.button.disabled : color.button.primary,
+            justifyContent: 'center',
+            alignItems: 'center',
+        },
+        buttonText: {
+            fontSize: standardFontSize(18),
+            color: color.text.button,
+            fontWeight: 'bold',
+        },
+    });
 
 export default Password;

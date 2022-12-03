@@ -15,7 +15,7 @@ const App = () => {
             <QueryClientProvider client={queryClient}>
                 <SafeAreaProvider>
                     <NavigationContainer>
-                        <StatusBar translucent backgroundColor="transparent" />
+                        <StatusBar translucent backgroundColor="transparent" barStyle="dark-content" />
                         <RootStackNavigator />
                     </NavigationContainer>
                 </SafeAreaProvider>

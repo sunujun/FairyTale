@@ -3,6 +3,7 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { MainTabParamList } from 'navigation';
 import { Home, MyPage, RecordStart } from 'screens';
+import { color } from 'styles';
 
 const Tab = createMaterialBottomTabNavigator<MainTabParamList>();
 
@@ -11,9 +12,9 @@ const MainTabNavigator = () => {
     return (
         <Tab.Navigator
             shifting={true}
-            activeColor="#f0edf6"
-            inactiveColor="#f0edf6aa"
-            screenOptions={{ tabBarColor: '#036B3F' }}>
+            activeColor="#F0EDF6"
+            inactiveColor="#F0EDF6AA"
+            screenOptions={{ tabBarColor: color.button.primary }}>
             <Tab.Screen
                 name="Home"
                 component={Home}
