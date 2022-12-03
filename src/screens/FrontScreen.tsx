@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { Pressable, Text, View, Image } from 'react-native';
 import styled from 'styled-components';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
@@ -16,13 +16,13 @@ const Background = styled(View)`
 `;
 
 const LoginButton = styled(Pressable)`
-    width: ${standardWidth(310)}px;
+    width: ${standardWidth(200)}px;
     height: ${standardHeight(40)}px;
-    background-color: ${color.button.disabled};
+    background-color: ${color.button.secondary};
     justify-content: center;
     align-items: center;
-    border-radius: ${standardWidth(4)}px;
-    margin-bottom: ${standardHeight(10)}px;
+    border-radius: ${standardWidth(40)}px;
+    margin-bottom: ${standardHeight(20)}px;
 `;
 
 const ButtonText = styled(Text)`
@@ -40,6 +40,9 @@ const FrontScreen = () => {
     return (
         <SafeAreaView mode="margin" edges={['right', 'left', 'bottom']} style={{ flex: 1 }}>
             <Background>
+                <Image source={require('../../assets/images/fairytale.png')} style={{ width: 450, height: 150}} />
+                <Image source={require('../../assets/images/book.png')} style={{ width: 200, height: 170}} />
+                <Image source={require('../../assets/images/leaf-shapes.png')} style={{ width: '100%', height: 80, position: 'absolute', padding: 230}} />
                 <LoginButton onPress={() => navigation.navigate('SignUp')}>
                     <ButtonText>회원가입</ButtonText>
                 </LoginButton>

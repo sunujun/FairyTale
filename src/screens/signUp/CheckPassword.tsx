@@ -12,6 +12,7 @@ import userSlice from 'redux/slices/user';
 
 const Background = styled(View)`
     flex: 1;
+    background-color: ${color.text.caution3};
     padding-top: ${StatusBar.currentHeight}px;
 `;
 

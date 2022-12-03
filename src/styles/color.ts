@@ -15,10 +15,12 @@ export default {
         main: '#036B3F',
         /** ![](https://www.colorhexa.com/FFFFFF.png) */
         button: '#FFFFFF',
-        /** ![](https://www.colorhexa.com/FF5E73.png) */
-        caution1: '#FF5E73',
+        /** ![](https://www.colorhexa.com/FDF3D6.png) */
+        caution1: '#FDF3D6',
         /** ![](https://www.colorhexa.com/166BFF.png) */
         caution2: '#166BFF',
+        /** ![](https://www.colorhexa.com/FDFBED.png) */
+        caution3: '#FDFBED',
     },
     /** ![](https://www.colorhexa.com/EEEEEE.png) */
     divider: '#EEEEEE',
@@ -28,8 +30,8 @@ export default {
         primary: '#036B3F',
         /** ![](https://www.colorhexa.com/FFFFFF.png) */
         secondary: '#FFFFFF',
-        /** ![](https://www.colorhexa.com/83C390.png) */
-        disabled: '#83C390',
+        /** ![](https://www.colorhexa.com/5E4E0B.png) */
+        disabled: '#5E4E0B',
         /** ![](https://www.colorhexa.com/EEEEEE.png) */
         border: '#EEEEEE',
     },
