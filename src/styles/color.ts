@@ -32,8 +32,8 @@ export default {
         primary: '#036B3F',
         /** ![](https://www.colorhexa.com/FFFFFF.png) */
         secondary: '#FFFFFF',
-        /** ![](https://www.colorhexa.com/5E4E0B.png) */
-        disabled: '#5E4E0B',
+        /** ![](https://www.colorhexa.com/83C390.png) */
+        disabled: '#83C390',
         /** ![](https://www.colorhexa.com/EEEEEE.png) */
         border: '#EEEEEE',
     },

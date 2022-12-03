@@ -40,9 +40,12 @@ const FrontScreen = () => {
     return (
         <SafeAreaView mode="margin" edges={['right', 'left', 'bottom']} style={{ flex: 1 }}>
             <Background>
-                <Image source={require('../../assets/images/fairytale.png')} style={{ width: 450, height: 150}} />
-                <Image source={require('../../assets/images/book.png')} style={{ width: 200, height: 170}} />
-                <Image source={require('../../assets/images/leaf-shapes.png')} style={{ width: '100%', height: 80, position: 'absolute', padding: 230}} />
+                <Image source={require('images/fairytale.png')} style={{ width: 450, height: 150 }} />
+                <Image source={require('images/book.png')} style={{ width: 200, height: 170 }} />
+                <Image
+                    source={require('images/leaf-shapes.png')}
+                    style={{ width: '100%', height: 80, position: 'absolute', padding: 230 }}
+                />
                 <LoginButton onPress={() => navigation.navigate('SignUp')}>
                     <ButtonText>회원가입</ButtonText>
                 </LoginButton>

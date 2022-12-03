@@ -63,7 +63,7 @@ const RootStackNavigator = () => {
     //     getTokenAndRefresh();
     // }, [dispatch]);
 
-    return isLoggedIn ? (
+    return !isLoggedIn ? (
         <Stack.Navigator
             screenOptions={{
                 headerShown: false,
