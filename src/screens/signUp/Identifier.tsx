@@ -61,7 +61,7 @@ const Identifier = () => {
             </Background>
             <NextButton
                 disabled={id === ''}
-                style={id === '' && { backgroundColor: color.button.disabledPrimary }}
+                style={id === '' && { backgroundColor: color.button.disabled }}
                 onPress={() => {
                     dispatch(
                         signUpSlice.actions.setEmail({

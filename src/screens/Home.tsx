@@ -5,7 +5,7 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { HomeStackParamList } from 'navigation';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import OctIcons from 'react-native-vector-icons/Octicons';
-import { standardFontSize, standardHeight, standardWidth } from 'styles';
+import { color, standardFontSize, standardHeight, standardWidth } from 'styles';
 
 interface FilterButtonProps {
     /** key  */
@@ -105,63 +105,55 @@ const Home = () => {
     }, []);
 
     return (
-        <SafeAreaView mode="margin" style={styles.safeArea}>
-            <View style={styles.container}>
-                <View style={styles.searchBox}>
-                    <OctIcons name="search" size={standardFontSize(18)} />
-                    <TextInput
-                        style={styles.searchInput}
-                        value={searchText}
-                        onChangeText={text => setSearchText(text)}
-                        placeholder="검색어를 입력하세요"
-                    />
-                    {searchText !== '' && (
-                        <Pressable onPress={() => setSearchText('')}>
-                            <OctIcons name="x-circle-fill" size={standardFontSize(20)} />
-                        </Pressable>
-                    )}
-                </View>
-                <View style={styles.filterList}>
-                    {filterData.map(item => {
-                        return (
-                            <Pressable
-                                key={item.key}
-                                onPress={() => setFilterOption(item.key)}
-                                style={
-                                    filterOption === item.key ? styles.selectedFilterBox : styles.unselectedFilterBox
-                                }>
-                                <Text
-                                    style={
-                                        filterOption === item.key
-                                            ? styles.selectedFilterText
-                                            : styles.unselectedFilterText
-                                    }>
-                                    {item.label}
-                                </Text>
-                            </Pressable>
-                        );
-                    })}
-                </View>
-                <FlatList
-                    data={bookData}
-                    ItemSeparatorComponent={() => <View style={styles.separator} />}
-                    renderItem={renderItem}
-                    keyExtractor={keyExtractor}
-                    showsVerticalScrollIndicator={false}
+        <SafeAreaView style={styles.container}>
+            <View style={styles.searchBox}>
+                <OctIcons name="search" size={standardFontSize(18)} />
+                <TextInput
+                    style={styles.searchInput}
+                    value={searchText}
+                    onChangeText={text => setSearchText(text)}
+                    placeholder="검색어를 입력하세요"
                 />
+                {searchText !== '' && (
+                    <Pressable onPress={() => setSearchText('')}>
+                        <OctIcons name="x-circle-fill" size={standardFontSize(20)} />
+                    </Pressable>
+                )}
             </View>
+            <View style={styles.filterList}>
+                {filterData.map(item => {
+                    return (
+                        <Pressable
+                            key={item.key}
+                            onPress={() => setFilterOption(item.key)}
+                            style={filterOption === item.key ? styles.selectedFilterBox : styles.unselectedFilterBox}>
+                            <Text
+                                style={
+                                    filterOption === item.key ? styles.selectedFilterText : styles.unselectedFilterText
+                                }>
+                                {item.label}
+                            </Text>
+                        </Pressable>
+                    );
+                })}
+            </View>
+            <FlatList
+                data={bookData}
+                ItemSeparatorComponent={() => <View style={styles.separator} />}
+                renderItem={renderItem}
+                keyExtractor={keyExtractor}
+                showsVerticalScrollIndicator={false}
+            />
         </SafeAreaView>
     );
 };
 
 const styles = StyleSheet.create({
-    safeArea: {
-        flex: 1,
-    },
     container: {
         flex: 1,
         paddingTop: standardHeight(16),
         alignItems: 'center',
+        backgroundColor: color.background.primary,
     },
     searchBox: {
         borderRadius: 4,

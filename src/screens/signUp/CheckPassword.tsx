@@ -92,7 +92,7 @@ const CheckPassword = () => {
             {/* TODO: 텍스트 인풋에 비밀번호가 입력되어야 press 활성화, 비활성화/활성화 디자인 추가 */}
             <NextButton
                 disabled={password === ''}
-                style={password === '' && { backgroundColor: color.button.disabledPrimary }}
+                style={password === '' && { backgroundColor: color.button.disabled }}
                 onPress={() => {
                     if (correctPassword) {
                         handleSubmit();

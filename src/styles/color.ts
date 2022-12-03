@@ -9,37 +9,35 @@ export default {
         secondary1: '#666666',
         /** ![](https://www.colorhexa.com/999999.png) */
         secondary2: '#999999',
-        /** ![](https://www.colorhexa.com/bbbbbb.png) */
-        hint: '#bbbbbb',
-        /** ![](https://www.colorhexa.com/036b3f.png) */
-        main: '#036b3f',
-        /** ![](https://www.colorhexa.com/f0edf6.png) */
-        button: '#f0edf6',
-        /** ![](https://www.colorhexa.com/ff5e73.png) */
-        caution1: '#ff5e73',
-        /** ![](https://www.colorhexa.com/166bff.png) */
-        caution2: '#166bff',
+        /** ![](https://www.colorhexa.com/BBBBBB.png) */
+        hint: '#BBBBBB',
+        /** ![](https://www.colorhexa.com/036B3F.png) */
+        main: '#036B3F',
+        /** ![](https://www.colorhexa.com/FFFFFF.png) */
+        button: '#FFFFFF',
+        /** ![](https://www.colorhexa.com/FF5E73.png) */
+        caution1: '#FF5E73',
+        /** ![](https://www.colorhexa.com/166BFF.png) */
+        caution2: '#166BFF',
     },
-    /** ![](https://www.colorhexa.com/eeeeee.png) */
-    divider: '#eeeeee',
+    /** ![](https://www.colorhexa.com/EEEEEE.png) */
+    divider: '#EEEEEE',
     /** 버튼 색상 */
     button: {
-        /** ![](https://www.colorhexa.com/036b3f.png) */
-        primary: '#036b3f',
-        /** ![](https://www.colorhexa.com/fff3f1.png) */
-        secondary: '#fff3f1',
-        /** ![](https://www.colorhexa.com/ffffff.png) */
-        disabled: '#ffffff',
-        /** ![](https://www.colorhexa.com/ccaab6.png) */
-        disabledPrimary: '#ccaab6',
-        /** ![](https://www.colorhexa.com/eeeeee.png) */
-        border: '#eeeeee',
+        /** ![](https://www.colorhexa.com/036B3F.png) */
+        primary: '#036B3F',
+        /** ![](https://www.colorhexa.com/FFFFFF.png) */
+        secondary: '#FFFFFF',
+        /** ![](https://www.colorhexa.com/83C390.png) */
+        disabled: '#83C390',
+        /** ![](https://www.colorhexa.com/EEEEEE.png) */
+        border: '#EEEEEE',
     },
     /** 배경 색상 */
     background: {
-        /** ![](https://www.colorhexa.com/f0edf6.png) */
-        primary: '#f0edf6',
-        /** ![](https://www.colorhexa.com/f5f5f5.png) */
-        secondary: '#f5f5f5',
+        /** ![](https://www.colorhexa.com/FFFFFF.png) */
+        primary: '#FFFFFF',
+        /** ![](https://www.colorhexa.com/EEEFF4.png) */
+        secondary: '#EEEFF4',
     },
 };
