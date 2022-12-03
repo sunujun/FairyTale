@@ -8,7 +8,7 @@ import { RootState } from 'redux/store/reducers';
 import { useAppDispatch } from 'redux/store';
 import userSlice from 'redux/slices/user';
 
-/** 설정 화면 */
+/** 내 정보 화면 */
 const MyPage = () => {
     const dispatch = useAppDispatch();
     /** 현재 앱의 버전 체크 */

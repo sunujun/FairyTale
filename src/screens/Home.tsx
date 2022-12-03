@@ -2,7 +2,7 @@ import React, { useCallback, useState } from 'react';
 import { FlatList, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { HomeStackParamList } from 'navigation';
+import { RootStackParamList } from 'navigation';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import OctIcons from 'react-native-vector-icons/Octicons';
 import { color, standardFontSize, standardHeight, standardWidth } from 'styles';
@@ -21,10 +21,12 @@ interface BookProps {
     title: string;
     /** 아티스트 */
     artist: string;
+    /** 줄거리 */
+    summary: string;
     url: any;
 }
 
-type HomeStackProp = StackNavigationProp<HomeStackParamList, 'Home'>;
+type RootStackProp = StackNavigationProp<RootStackParamList, 'Main'>;
 
 /** 홈 화면 */
 const Home = () => {
@@ -32,7 +34,7 @@ const Home = () => {
     const [searchText, setSearchText] = useState('');
     /** 선택된 필터 옵션 */
     const [filterOption, setFilterOption] = useState('all');
-    const navigation = useNavigation<HomeStackProp>();
+    const navigation = useNavigation<RootStackProp>();
     /** 필터 종류 */
     const filterData: FilterButtonProps[] = [
         {
@@ -63,24 +65,31 @@ const Home = () => {
             title: '콩쥐팥쥐',
             artist: '한국전래동화',
             url: require('mp3/Kongjwi_Patjwi.mp3'),
+            summary:
+                '계모 밑에서 갖은 학대를 받던 콩쥐가 고귀한 인물과 혼인하게 되고, 콩쥐를 괴롭히던 팥쥐와 계모는 처벌받는다는 내용의 설화',
         },
         {
             key: 'Cinderella',
             title: '신데렐라',
             artist: '외국전래동화',
             url: require('mp3/Cinderella.mp3'),
+            summary:
+                '어려서 부모를 잃고 계모와 언니들한테 구박 받는 인생을 살지만 요정이 마법으로 만든 호박마차와 유리구두 한 짝 덕분에 왕자와 결혼하여 왕자비로서 인생역전하는 여인의 이야기',
         },
         {
             key: 'The Little Mermaid',
             title: '인어공주',
             url: require('mp3/The_Little_Mermaid.mp3'),
             artist: '외국전래동화',
+            summary:
+                '폭풍에 휘말려 난파한 인간 왕자를 구해준 뒤 그를 사랑하게 된 인어공주는 자기 목소리를 희생하는 대신 인간처럼 두 다리가 생기는 조건으로 마녀와 거래하여 왕자를 다시 만난다. 그녀는 왕자에게 발견된 뒤, 얼마간 귀여움을 받고 행복을 꿈꾼다.',
         },
         {
             key: 'custom',
             title: '커스텀보이스',
             url: require('mp3/custom.mp3'),
             artist: '커스텀보이스',
+            summary: '',
         },
     ];
 
@@ -89,7 +98,7 @@ const Home = () => {
             return (
                 <Pressable
                     onPress={() => {
-                        navigation.navigate('Player', { bookData: item });
+                        navigation.navigate('BookInformation', { bookData: item });
                     }}>
                     <View style={styles.bookList}>
                         <Text>{item.title}</Text>

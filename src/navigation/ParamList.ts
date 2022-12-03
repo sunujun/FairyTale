@@ -4,6 +4,7 @@ export type RootStackParamList = {
     SignIn: undefined;
     Main: undefined;
     Record: undefined;
+    BookInformation: { bookData: BookProps };
 };
 
 export type SignUpStackParamList = {
@@ -29,7 +30,10 @@ interface BookProps {
     key: string;
     /** 제목 */
     title: string;
+    /** 아티스트 */
     artist: string;
+    /** 줄거리 */
+    summary: string;
     url: any;
 }
 
